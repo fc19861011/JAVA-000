@@ -1,3 +1,5 @@
+package homework.two;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,7 +13,7 @@ public class HelloClassLoader extends ClassLoader {
 
     public static void main(String[] args) {
         try {
-            Class hello = new HelloClassLoader().findClass("Hello");
+            Class hello = new HelloClassLoader().findClass("homework.two.Hello");
             Method helloMethod = hello.getMethod("hello");
             helloMethod.invoke(hello.newInstance());
         } catch (InstantiationException e) {
@@ -29,7 +31,7 @@ public class HelloClassLoader extends ClassLoader {
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-        File helloxlass = new File(this.getClass().getResource("Hello.xlass").getPath());
+        File helloxlass = new File(this.getClass().getResource("homework/two/Hello.xlass").getPath());
         int fileLength = (int) helloxlass.length();
         byte[] classByte = new byte[fileLength];
         try {
