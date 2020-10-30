@@ -1,0 +1,23 @@
+Java HotSpot(TM) 64-Bit Server VM (25.171-b11) for windows-amd64 JRE (1.8.0_171-b11), built on Mar 28 2018 16:06:12 by "java_re" with MS VC++ 10.0 (VS2010)
+Memory: 4k page, physical 16658664k(6140432k free), swap 39727336k(21026996k free)
+CommandLine flags: -XX:InitialHeapSize=4294967296 -XX:MaxHeapSize=4294967296 -XX:MaxNewSize=348966912 -XX:MaxTenuringThreshold=6 -XX:NewSize=348966912 -XX:OldPLABSize=16 -XX:OldSize=697933824 -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseConcMarkSweepGC -XX:-UseLargePagesIndividualAllocation -XX:+UseParNewGC 
+2020-10-29T16:50:38.571+0800: 0.271: [GC (Allocation Failure) 2020-10-29T16:50:38.571+0800: 0.271: [ParNew: 272640K->34048K(306688K), 0.0245308 secs] 272640K->82996K(4160256K), 0.0248569 secs] [Times: user=0.05 sys=0.03, real=0.02 secs] 
+2020-10-29T16:50:38.631+0800: 0.331: [GC (Allocation Failure) 2020-10-29T16:50:38.631+0800: 0.331: [ParNew: 306688K->34047K(306688K), 0.0268321 secs] 355636K->162485K(4160256K), 0.0270991 secs] [Times: user=0.03 sys=0.08, real=0.03 secs] 
+2020-10-29T16:50:38.692+0800: 0.391: [GC (Allocation Failure) 2020-10-29T16:50:38.692+0800: 0.391: [ParNew: 306687K->34048K(306688K), 0.0427581 secs] 435125K->238907K(4160256K), 0.0430304 secs] [Times: user=0.08 sys=0.02, real=0.04 secs] 
+2020-10-29T16:50:38.765+0800: 0.464: [GC (Allocation Failure) 2020-10-29T16:50:38.765+0800: 0.465: [ParNew: 306688K->34048K(306688K), 0.0430427 secs] 511547K->319126K(4160256K), 0.0432625 secs] [Times: user=0.16 sys=0.03, real=0.04 secs] 
+2020-10-29T16:50:38.837+0800: 0.537: [GC (Allocation Failure) 2020-10-29T16:50:38.837+0800: 0.537: [ParNew: 306688K->34048K(306688K), 0.0432117 secs] 591766K->398039K(4160256K), 0.0434519 secs] [Times: user=0.14 sys=0.03, real=0.04 secs] 
+2020-10-29T16:50:38.909+0800: 0.610: [GC (Allocation Failure) 2020-10-29T16:50:38.910+0800: 0.610: [ParNew: 306688K->34048K(306688K), 0.0423509 secs] 670679K->475268K(4160256K), 0.0425810 secs] [Times: user=0.11 sys=0.00, real=0.04 secs] 
+2020-10-29T16:50:38.982+0800: 0.682: [GC (Allocation Failure) 2020-10-29T16:50:38.983+0800: 0.683: [ParNew: 306688K->34048K(306688K), 0.0421608 secs] 747908K->554365K(4160256K), 0.0424080 secs] [Times: user=0.17 sys=0.01, real=0.04 secs] 
+2020-10-29T16:50:39.055+0800: 0.755: [GC (Allocation Failure) 2020-10-29T16:50:39.055+0800: 0.755: [ParNew: 306688K->34048K(306688K), 0.0402228 secs] 827005K->630962K(4160256K), 0.0404581 secs] [Times: user=0.05 sys=0.06, real=0.04 secs] 
+2020-10-29T16:50:39.129+0800: 0.829: [GC (Allocation Failure) 2020-10-29T16:50:39.129+0800: 0.829: [ParNew: 306688K->34048K(306688K), 0.0451301 secs] 903602K->715056K(4160256K), 0.0453643 secs] [Times: user=0.11 sys=0.05, real=0.05 secs] 
+2020-10-29T16:50:39.204+0800: 0.904: [GC (Allocation Failure) 2020-10-29T16:50:39.204+0800: 0.904: [ParNew: 306688K->34048K(306688K), 0.0449256 secs] 987696K->799653K(4160256K), 0.0451813 secs] [Times: user=0.06 sys=0.03, real=0.05 secs] 
+2020-10-29T16:50:39.283+0800: 0.983: [GC (Allocation Failure) 2020-10-29T16:50:39.283+0800: 0.983: [ParNew: 306688K->34048K(306688K), 0.0412399 secs] 1072293K->880014K(4160256K), 0.0414684 secs] [Times: user=0.09 sys=0.02, real=0.04 secs] 
+2020-10-29T16:50:39.357+0800: 1.057: [GC (Allocation Failure) 2020-10-29T16:50:39.357+0800: 1.057: [ParNew: 306688K->34048K(306688K), 0.0494362 secs] 1152654K->972775K(4160256K), 0.0497420 secs] [Times: user=0.16 sys=0.03, real=0.05 secs] 
+Heap
+ par new generation   total 306688K, used 219999K [0x00000006c0000000, 0x00000006d4cc0000, 0x00000006d4cc0000)
+  eden space 272640K,  68% used [0x00000006c0000000, 0x00000006cb597c48, 0x00000006d0a40000)
+  from space 34048K, 100% used [0x00000006d0a40000, 0x00000006d2b80000, 0x00000006d2b80000)
+  to   space 34048K,   0% used [0x00000006d2b80000, 0x00000006d2b80000, 0x00000006d4cc0000)
+ concurrent mark-sweep generation total 3853568K, used 938727K [0x00000006d4cc0000, 0x00000007c0000000, 0x00000007c0000000)
+ Metaspace       used 2694K, capacity 4486K, committed 4864K, reserved 1056768K
+  class space    used 290K, capacity 386K, committed 512K, reserved 1048576K
