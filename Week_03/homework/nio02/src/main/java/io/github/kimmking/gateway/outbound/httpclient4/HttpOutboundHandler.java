@@ -4,10 +4,8 @@ package io.github.kimmking.gateway.outbound.httpclient4;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.http.DefaultFullHttpResponse;
-import io.netty.handler.codec.http.FullHttpRequest;
-import io.netty.handler.codec.http.FullHttpResponse;
-import io.netty.handler.codec.http.HttpUtil;
+import io.netty.handler.codec.http.*;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.concurrent.FutureCallback;
@@ -23,6 +21,7 @@ import static io.netty.handler.codec.http.HttpResponseStatus.NO_CONTENT;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
+@Slf4j
 public class HttpOutboundHandler {
     
     private CloseableHttpAsyncClient httpclient;
@@ -55,7 +54,8 @@ public class HttpOutboundHandler {
     }
     
     public void handle(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx) {
-        final String url = this.backendUrl + fullRequest.uri();
+        log.info("===============httpclient");
+        final String url = fullRequest.uri();
         proxyService.submit(()->fetchGet(fullRequest, ctx, url));
     }
     
@@ -63,6 +63,10 @@ public class HttpOutboundHandler {
         final HttpGet httpGet = new HttpGet(url);
         //httpGet.setHeader(HTTP.CONN_DIRECTIVE, HTTP.CONN_CLOSE);
         httpGet.setHeader(HTTP.CONN_DIRECTIVE, HTTP.CONN_KEEP_ALIVE);
+        HttpHeaders headers = inbound.headers();
+        httpGet.setHeader("nio", headers.get("nio"));
+        httpGet.setHeader("balance", headers.get("balance"));
+        httpGet.setHeader("dual", headers.get("dual"));
         httpclient.execute(httpGet, new FutureCallback<HttpResponse>() {
             @Override
             public void completed(final HttpResponse endpointResponse) {
@@ -102,13 +106,13 @@ public class HttpOutboundHandler {
 //            System.out.println(body.length);
     
             response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(body));
-            response.headers().set("Content-Type", "application/json");
+            response.headers().set("Content-Type", "application/html");
             response.headers().add(fullRequest.headers());
 //            response.headers().setInt("Content-Length", Integer.parseInt(endpointResponse.getFirstHeader("Content-Length").getValue()));
 //            for (Header e : endpointResponse.getAllHeaders()) {
 //                //response.headers().set(e.getName(),e.getValue());
 //                System.out.println(e.getName() + " => " + e.getValue());
-//            } 
+//            }
         
         } catch (Exception e) {
             e.printStackTrace();

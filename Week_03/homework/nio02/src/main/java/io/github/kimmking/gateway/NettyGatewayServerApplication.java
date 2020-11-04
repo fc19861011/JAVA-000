@@ -3,7 +3,7 @@ package io.github.kimmking.gateway;
 
 import io.github.kimmking.gateway.inbound.HttpInboundServer;
 
-public class NettyServerApplication {
+public class NettyGatewayServerApplication {
     
     public final static String GATEWAY_NAME = "NIOGateway";
     public final static String GATEWAY_VERSION = "1.0.0";
