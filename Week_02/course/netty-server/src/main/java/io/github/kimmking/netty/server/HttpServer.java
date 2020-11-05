@@ -21,9 +21,9 @@ public class HttpServer {
     private boolean ssl;
     private int port;
 
-    public HttpServer(boolean ssl,int port) {
-        this.port=port;
-        this.ssl=ssl;
+    public HttpServer(boolean ssl, int port) {
+        this.port = port;
+        this.ssl = ssl;
     }
 
     public void run() throws Exception {
@@ -48,10 +48,10 @@ public class HttpServer {
                     .option(ChannelOption.SO_SNDBUF, 32 * 1024)
                     .option(EpollChannelOption.SO_REUSEPORT, true)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
-                    //.option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
+            //.option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
 
             b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
-                    .handler(new LoggingHandler(LogLevel.INFO)).childHandler(new HttpInitializer(sslCtx));
+                    .handler(new LoggingHandler(LogLevel.INFO)).childHandler(new HttpInitializer(sslCtx, port));
 
             Channel ch = b.bind(port).sync().channel();
             logger.info("开启netty http服务器，监听地址和端口为 " + (ssl ? "https" : "http") + "://127.0.0.1:" + port + '/');

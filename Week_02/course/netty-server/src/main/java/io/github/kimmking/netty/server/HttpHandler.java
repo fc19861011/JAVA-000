@@ -4,10 +4,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.handler.codec.http.DefaultFullHttpResponse;
-import io.netty.handler.codec.http.FullHttpRequest;
-import io.netty.handler.codec.http.FullHttpResponse;
-import io.netty.handler.codec.http.HttpUtil;
+import io.netty.handler.codec.http.*;
 import io.netty.util.ReferenceCountUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +18,11 @@ import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 public class HttpHandler extends ChannelInboundHandlerAdapter {
 
     private static Logger logger = LoggerFactory.getLogger(HttpHandler.class);
+    private final int port;
+
+    public HttpHandler(int port) {
+        this.port = port;
+    }
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
@@ -45,7 +47,11 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
     private void handlerTest(FullHttpRequest fullRequest, ChannelHandlerContext ctx) {
         FullHttpResponse response = null;
         try {
-            String value = "hello,kimmking";
+            HttpHeaders headers = fullRequest.headers();
+            String value = "hello,fc,port" + this.port;
+//                    ",nio" + headers.get("nio") +
+//                    ",dual" + headers.get("dual") +
+//                    ",balance" + headers.get("balance");
             response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(value.getBytes("UTF-8")));
             response.headers().set("Content-Type", "application/json");
             response.headers().setInt("Content-Length", response.content().readableBytes());

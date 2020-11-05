@@ -1,5 +1,7 @@
 package io.github.kimmking.gateway.inbound;
 
+import io.github.kimmking.gateway.registry.RegistryCenter;
+import io.github.kimmking.gateway.util.PropertiesUtil;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.Channel;
@@ -45,8 +47,8 @@ public class HttpInboundServer {
 
             b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
                     .handler(new LoggingHandler(LogLevel.INFO)).childHandler(new HttpInboundInitializer(this.proxyServer));
-
             Channel ch = b.bind(port).sync().channel();
+            RegistryCenter.init();
             logger.info("开启netty http服务器，监听地址和端口为 http://127.0.0.1:" + port + '/');
             ch.closeFuture().sync();
         } finally {
