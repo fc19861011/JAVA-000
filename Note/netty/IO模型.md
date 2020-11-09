@@ -34,7 +34,7 @@ I/O请求可以分为两个阶段，分别位调用阶段和执行阶段
 
 ### 异步I/O
 
-<img src="C:\fcwalker\github\JAVA-000\Note\img\async.png" alt="async" style="zoom: 33%;" />
+<img src=".\img\async.png" alt="async" style="zoom: 33%;" />
 
 异步 I/O 最重要的一点是从内核缓冲区拷贝数据到用户态缓冲区的过程也是由系统异步完成，应用进程只需要在指定的数组中引用数据即可。异步 I/O 与信号驱动 I/O 这种半异步模式的主要区别：**信号驱动 I/O 由内核通知何时可以开始一个 I/O 操作，而异步 I/O 由内核通知 I/O 操作何时已经完成**。
 
