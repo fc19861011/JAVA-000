@@ -13,6 +13,7 @@ public class ExecutorServiceDemo {
             String str = executorService.submit(new Callable<String>() {
                 @Override
                 public String call() throws Exception {
+                    Thread.sleep(5000);
                     return "I am a task, which submited by the so called laoda, and run by those anonymous workers";
                 }
             }).get();
@@ -21,6 +22,8 @@ public class ExecutorServiceDemo {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        executorService.shutdown();
+        System.out.println("main finished");
     }
 
 }

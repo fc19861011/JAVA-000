@@ -1,41 +1,48 @@
-package com.power;
+package com.power.callable;
 
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author F.C
  * 本周作业：（必做）思考有多少种方式，在main函数启动一个新线程或线程池， 异步运行一个方法，拿到这个方法的返回值后，退出主线程？
  * 写出你的方法，越多越好，提交到github。
  *
- * 1、基于CountDownLatch实现
+ * 2、基于 newSingleThreadExecutor 实现
+ * newSingleThreadExecutor：创建一个单线程的线程池。这个线程池只有一个线程在工作，也就是相当于单线程串行执行所有任
+ * 务。如果这个唯一的线程因为异常结束，那么会有一个新的线程来替代它。此线程池保证所有任务
+ * 的执行顺序按照任务的提交顺序执行。
  *
- */
-public class CountDownLatchRelease {
-    private volatile static int result;
+ **/
+public class SingleThreadExecutorRelease {
 
     public static void main(String[] args) {
-
         long start = System.currentTimeMillis();
-        final CountDownLatch countDownLatch = new CountDownLatch(1);
-
-        // 异步执行 下面方法
-        new Thread(() -> {
-            // 这是得到的返回值
-            result = sumByCache(36);
-            // int result = sumByTailCall(36);
-            countDownLatch.countDown();
-        }).start();
-
+        // 在这里创建一个线程或线程池，
+        final ExecutorService executorService = Executors.newSingleThreadExecutor();
+        // 异步执行
+        int result = 0;
         try {
-            countDownLatch.await();
+            result = executorService.submit(new Callable<Integer>() {
+                @Override
+                public Integer call() throws Exception {
+                    Thread.sleep(10000);
+                    return sumByCache(36);
+                }
+            }).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
+        executorService.shutdown();
         // 确保 拿到result 并输出
-        System.out.println("异步计算结果为：" + result);
-        System.out.println("使用时间：" + (System.currentTimeMillis() - start) + " ms");
+        System.out.println("[主线程]，异步计算结果为：" + result);
+        System.out.println("[主线程]，使用时间：" + (System.currentTimeMillis() - start) + " ms");
         // 然后退出main线程
-        System.out.println("main finished!");
+        System.out.println("[主线程]，main finished!");
     }
 
     private static int sumByCache(int num) {
@@ -72,4 +79,5 @@ public class CountDownLatchRelease {
         if (a < 2) return 1;
         return fibo(a - 1) + fibo(a - 2);
     }
+
 }

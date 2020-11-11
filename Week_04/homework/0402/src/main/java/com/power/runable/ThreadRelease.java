@@ -1,9 +1,5 @@
-package com.power;
+package com.power.runable;
 
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -11,42 +7,40 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 本周作业：（必做）思考有多少种方式，在main函数启动一个新线程或线程池， 异步运行一个方法，拿到这个方法的返回值后，退出主线程？
  * 写出你的方法，越多越好，提交到github。
  *
- * 3、基于CyclicBarrier实现
+ * 2、基于 newCachedThreadPool 实现
+ * newCachedThreadPool：创建一个可缓存的线程池。如果线程池的大小超过了处理任务所需要的线程，
+ * 那么就会回收部分空闲（60秒不执行任务）的线程，当任务数增加时，此线程池又可以智能的添
+ * 加新线程来处理任务。此线程池不会对线程池大小做限制，线程池大小完全依赖于操作系统（或者
+ * 说JVM）能够创建的最大线程大小。
  *
  **/
-public class CyclicBarrierRelease {
+public class ThreadRelease {
+    /**
+     * 启动一个main函数
+     * 默认会有2个active线程：
+     * Thread[main,5,main] 以及 Thread[Monitor Ctrl-Break,5,main]
+     */
+    private static final int THREAD_ACTIVE_COUNT = 2;
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        final ExecutorService executorService = Executors.newFixedThreadPool(1);
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(1, new Runnable() {
-            @Override
-            public void run() {
-                // 回调时关闭线程池
-                executorService.shutdown();
-            }
-        });
+        // 在这里创建一个线程或线程池
         // 异步执行
         AtomicInteger result = new AtomicInteger();
-        executorService.execute(() -> {
-            // 这是得到的返回值
+        new Thread(() -> {
             result.set(sumByCache(36));
-            // int result = sumByTailCall(36);
-            try {
-                cyclicBarrier.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (BrokenBarrierException e) {
-                e.printStackTrace();
-            }
-        });
-        while (!executorService.isTerminated()) {
-            // 等待线程执行
+        }).start();
+
+        // 通过当前活动线程数，判断线程池是否结束
+        // main方法调用，默认会有 Thread[main,5,main] 以及 Thread[Monitor Ctrl-Break,5,main]
+        while(Thread.activeCount() > THREAD_ACTIVE_COUNT) {
+            // 等待线程执行结束
         }
-        System.out.println("异步计算结果为：" + result);
-        System.out.println("使用时间：" + (System.currentTimeMillis() - start) + " ms");
+        // 确保 拿到result 并输出
+        System.out.println("[主线程]，异步计算结果为：" + result);
+        System.out.println("[主线程]，使用时间：" + (System.currentTimeMillis() - start) + " ms");
         // 然后退出main线程
-        System.out.println("main finished!");
+        System.out.println("[主线程]，main finished!");
     }
 
     private static int sumByCache(int num) {
@@ -75,7 +69,7 @@ public class CyclicBarrierRelease {
      * 特点： 尾递归在普通尾调用的基础上，多出了2个特征： 1. 在尾部调用的是函数自身 (Self-called)； 2. 可通过优化，使得计算仅占用常量栈空间 (Stack Space)。
      *
      * 优化： 尾调用由于是函数的最后一步操作，所以不需要保留外层函数的调用记录， 因为调用位置、内部变量等信息都不会再用到了， 只要直接用内层函数的调用记录，取代外层函数的调用记录就可以了。
-     *
+     * 
      * @param a
      * @return
      */
@@ -83,4 +77,5 @@ public class CyclicBarrierRelease {
         if (a < 2) return 1;
         return fibo(a - 1) + fibo(a - 2);
     }
+
 }
