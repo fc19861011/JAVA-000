@@ -1,0 +1,6 @@
+JVM的作业，
+1、使用自定义Classloader机制，实现xlass的加载
+2、实现xlass打包的xar（类似class文件打包的jar）的加载
+3、基于自定义Classloader实现类的动态加载和卸载
+4、基于自定义Classloader实现模块化机制
+5、使用xar作为模块，实现xar动态加载和卸载s
