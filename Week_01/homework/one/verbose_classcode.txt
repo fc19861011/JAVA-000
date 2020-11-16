@@ -1,0 +1,341 @@
+Classfile /C:/fcwalker/github/JAVA-000/Week_01/homework/one/TestJavaByteCode.class
+  Last modified 2020-11-16; size 2252 bytes
+  MD5 checksum e45194829842b1f472dc662194ea73f8
+  Compiled from "TestJavaByteCode.java"
+public class TestJavaByteCode
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+    #1 = Methodref          #42.#65       // java/lang/Object."<init>":()V
+    #2 = String             #66           // final
+    #3 = Fieldref           #23.#67       // TestJavaByteCode.f:Ljava/lang/String;
+    #4 = String             #68           // volatile
+    #5 = Fieldref           #23.#69       // TestJavaByteCode.v:Ljava/lang/String;
+    #6 = Fieldref           #23.#70       // TestJavaByteCode.THREAD_ACTIVE_COUNT:I
+    #7 = String             #71           // 111
+    #8 = Fieldref           #72.#73       // java/lang/System.out:Ljava/io/PrintStream;
+    #9 = Methodref          #74.#75       // java/io/PrintStream.println:(I)V
+   #10 = Long               3l
+   #12 = Long               7l
+   #14 = Methodref          #74.#76       // java/io/PrintStream.println:(J)V
+   #15 = Double             2.2d
+   #17 = Double             1.1d
+   #19 = Methodref          #74.#77       // java/io/PrintStream.println:(D)V
+   #20 = Methodref          #23.#78       // TestJavaByteCode.doLoop:()V
+   #21 = Class              #79           // java/lang/StringBuilder
+   #22 = Methodref          #21.#65       // java/lang/StringBuilder."<init>":()V
+   #23 = Class              #80           // TestJavaByteCode
+   #24 = Methodref          #21.#81       // java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   #25 = Fieldref           #23.#82       // TestJavaByteCode.b:Ljava/lang/String;
+   #26 = Methodref          #21.#83       // java/lang/StringBuilder.toString:()Ljava/lang/String;
+   #27 = Methodref          #74.#84       // java/io/PrintStream.println:(Ljava/lang/String;)V
+   #28 = Class              #85           // java/lang/Thread
+   #29 = InvokeDynamic      #0:#90        // #0:run:(LTestJavaByteCode;)Ljava/lang/Runnable;
+   #30 = Methodref          #28.#91       // java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+   #31 = Methodref          #28.#92       // java/lang/Thread.start:()V
+   #32 = String             #93           // 1======:
+   #33 = Methodref          #28.#94       // java/lang/Thread.activeCount:()I
+   #34 = String             #95           // 2======:
+   #35 = Long               1000l
+   #37 = Methodref          #28.#96       // java/lang/Thread.sleep:(J)V
+   #38 = Class              #97           // java/lang/InterruptedException
+   #39 = Methodref          #38.#98       // java/lang/InterruptedException.printStackTrace:()V
+   #40 = String             #99           // 222
+   #41 = String             #100          // static
+   #42 = Class              #101          // java/lang/Object
+   #43 = Utf8               f
+   #44 = Utf8               Ljava/lang/String;
+   #45 = Utf8               ConstantValue
+   #46 = Utf8               b
+   #47 = Utf8               v
+   #48 = Utf8               THREAD_ACTIVE_COUNT
+   #49 = Utf8               I
+   #50 = Utf8               <init>
+   #51 = Utf8               ()V
+   #52 = Utf8               Code
+   #53 = Utf8               LineNumberTable
+   #54 = Utf8               main
+   #55 = Utf8               ([Ljava/lang/String;)V
+   #56 = Utf8               StackMapTable
+   #57 = Class              #80           // TestJavaByteCode
+   #58 = Class              #102          // "[Ljava/lang/String;"
+   #59 = Utf8               doLoop
+   #60 = Utf8               lambda$main$0
+   #61 = Class              #97           // java/lang/InterruptedException
+   #62 = Utf8               <clinit>
+   #63 = Utf8               SourceFile
+   #64 = Utf8               TestJavaByteCode.java
+   #65 = NameAndType        #50:#51       // "<init>":()V
+   #66 = Utf8               final
+   #67 = NameAndType        #43:#44       // f:Ljava/lang/String;
+   #68 = Utf8               volatile
+   #69 = NameAndType        #47:#44       // v:Ljava/lang/String;
+   #70 = NameAndType        #48:#49       // THREAD_ACTIVE_COUNT:I
+   #71 = Utf8               111
+   #72 = Class              #103          // java/lang/System
+   #73 = NameAndType        #104:#105     // out:Ljava/io/PrintStream;
+   #74 = Class              #106          // java/io/PrintStream
+   #75 = NameAndType        #107:#108     // println:(I)V
+   #76 = NameAndType        #107:#109     // println:(J)V
+   #77 = NameAndType        #107:#110     // println:(D)V
+   #78 = NameAndType        #59:#51       // doLoop:()V
+   #79 = Utf8               java/lang/StringBuilder
+   #80 = Utf8               TestJavaByteCode
+   #81 = NameAndType        #111:#112     // append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   #82 = NameAndType        #46:#44       // b:Ljava/lang/String;
+   #83 = NameAndType        #113:#114     // toString:()Ljava/lang/String;
+   #84 = NameAndType        #107:#115     // println:(Ljava/lang/String;)V
+   #85 = Utf8               java/lang/Thread
+   #86 = Utf8               BootstrapMethods
+   #87 = MethodHandle       #6:#116       // invokestatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #88 = MethodType         #51           //  ()V
+   #89 = MethodHandle       #7:#117       // invokespecial TestJavaByteCode.lambda$main$0:()V
+   #90 = NameAndType        #118:#119     // run:(LTestJavaByteCode;)Ljava/lang/Runnable;
+   #91 = NameAndType        #50:#120      // "<init>":(Ljava/lang/Runnable;)V
+   #92 = NameAndType        #121:#51      // start:()V
+   #93 = Utf8               1======:
+   #94 = NameAndType        #122:#123     // activeCount:()I
+   #95 = Utf8               2======:
+   #96 = NameAndType        #124:#109     // sleep:(J)V
+   #97 = Utf8               java/lang/InterruptedException
+   #98 = NameAndType        #125:#51      // printStackTrace:()V
+   #99 = Utf8               222
+  #100 = Utf8               static
+  #101 = Utf8               java/lang/Object
+  #102 = Utf8               [Ljava/lang/String;
+  #103 = Utf8               java/lang/System
+  #104 = Utf8               out
+  #105 = Utf8               Ljava/io/PrintStream;
+  #106 = Utf8               java/io/PrintStream
+  #107 = Utf8               println
+  #108 = Utf8               (I)V
+  #109 = Utf8               (J)V
+  #110 = Utf8               (D)V
+  #111 = Utf8               append
+  #112 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #113 = Utf8               toString
+  #114 = Utf8               ()Ljava/lang/String;
+  #115 = Utf8               (Ljava/lang/String;)V
+  #116 = Methodref          #126.#127     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #117 = Methodref          #23.#128      // TestJavaByteCode.lambda$main$0:()V
+  #118 = Utf8               run
+  #119 = Utf8               (LTestJavaByteCode;)Ljava/lang/Runnable;
+  #120 = Utf8               (Ljava/lang/Runnable;)V
+  #121 = Utf8               start
+  #122 = Utf8               activeCount
+  #123 = Utf8               ()I
+  #124 = Utf8               sleep
+  #125 = Utf8               printStackTrace
+  #126 = Class              #129          // java/lang/invoke/LambdaMetafactory
+  #127 = NameAndType        #130:#134     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #128 = NameAndType        #60:#51       // lambda$main$0:()V
+  #129 = Utf8               java/lang/invoke/LambdaMetafactory
+  #130 = Utf8               metafactory
+  #131 = Class              #136          // java/lang/invoke/MethodHandles$Lookup
+  #132 = Utf8               Lookup
+  #133 = Utf8               InnerClasses
+  #134 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #135 = Class              #137          // java/lang/invoke/MethodHandles
+  #136 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #137 = Utf8               java/lang/invoke/MethodHandles
+{
+  public static java.lang.String b;
+    descriptor: Ljava/lang/String;
+    flags: ACC_PUBLIC, ACC_STATIC
+
+  public TestJavaByteCode();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: ldc           #2                  // String final
+         7: putfield      #3                  // Field f:Ljava/lang/String;
+        10: aload_0
+        11: ldc           #4                  // String volatile
+        13: putfield      #5                  // Field v:Ljava/lang/String;
+        16: aload_0
+        17: iconst_2
+        18: putfield      #6                  // Field THREAD_ACTIVE_COUNT:I
+        21: return
+      LineNumberTable:
+        line 1: 0
+        line 3: 4
+        line 5: 10
+        line 7: 16
+
+  public void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=4, locals=17, args_size=2
+         0: aload_0
+         1: ldc           #7                  // String 111
+         3: putfield      #5                  // Field v:Ljava/lang/String;
+         6: iconst_4
+         7: istore_2
+         8: iconst_5
+         9: istore_3
+        10: iload_2
+        11: iload_3
+        12: iadd
+        13: istore        4
+        15: getstatic     #8                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        18: iload         4
+        20: invokevirtual #9                  // Method java/io/PrintStream.println:(I)V
+        23: ldc2_w        #10                 // long 3l
+        26: lstore        5
+        28: ldc2_w        #12                 // long 7l
+        31: lstore        7
+        33: lload         7
+        35: lload         5
+        37: lsub
+        38: lstore        9
+        40: getstatic     #8                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        43: lload         9
+        45: invokevirtual #14                 // Method java/io/PrintStream.println:(J)V
+        48: ldc2_w        #15                 // double 2.2d
+        51: dstore        11
+        53: ldc2_w        #17                 // double 1.1d
+        56: dstore        13
+        58: dload         13
+        60: dload         11
+        62: ddiv
+        63: dstore        15
+        65: getstatic     #8                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        68: dload         15
+        70: invokevirtual #19                 // Method java/io/PrintStream.println:(D)V
+        73: aload_0
+        74: invokevirtual #20                 // Method doLoop:()V
+        77: getstatic     #8                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        80: new           #21                 // class java/lang/StringBuilder
+        83: dup
+        84: invokespecial #22                 // Method java/lang/StringBuilder."<init>":()V
+        87: ldc           #2                  // String final
+        89: invokevirtual #24                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        92: getstatic     #25                 // Field b:Ljava/lang/String;
+        95: invokevirtual #24                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        98: invokevirtual #26                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+       101: invokevirtual #27                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       104: new           #28                 // class java/lang/Thread
+       107: dup
+       108: aload_0
+       109: invokedynamic #29,  0             // InvokeDynamic #0:run:(LTestJavaByteCode;)Ljava/lang/Runnable;
+       114: invokespecial #30                 // Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+       117: invokevirtual #31                 // Method java/lang/Thread.start:()V
+       120: getstatic     #8                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       123: new           #21                 // class java/lang/StringBuilder
+       126: dup
+       127: invokespecial #22                 // Method java/lang/StringBuilder."<init>":()V
+       130: ldc           #32                 // String 1======:
+       132: invokevirtual #24                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       135: aload_0
+       136: getfield      #5                  // Field v:Ljava/lang/String;
+       139: invokevirtual #24                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       142: invokevirtual #26                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+       145: invokevirtual #27                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       148: invokestatic  #33                 // Method java/lang/Thread.activeCount:()I
+       151: aload_0
+       152: getfield      #6                  // Field THREAD_ACTIVE_COUNT:I
+       155: if_icmple     161
+       158: goto          148
+       161: getstatic     #8                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       164: new           #21                 // class java/lang/StringBuilder
+       167: dup
+       168: invokespecial #22                 // Method java/lang/StringBuilder."<init>":()V
+       171: ldc           #34                 // String 2======:
+       173: invokevirtual #24                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       176: aload_0
+       177: getfield      #5                  // Field v:Ljava/lang/String;
+       180: invokevirtual #24                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       183: invokevirtual #26                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+       186: invokevirtual #27                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       189: return
+      LineNumberTable:
+        line 10: 0
+        line 11: 6
+        line 12: 8
+        line 13: 10
+        line 14: 15
+        line 15: 23
+        line 16: 28
+        line 17: 33
+        line 18: 40
+        line 19: 48
+        line 20: 53
+        line 21: 58
+        line 22: 65
+        line 23: 73
+        line 24: 77
+        line 26: 104
+        line 33: 117
+        line 34: 120
+        line 35: 148
+        line 38: 161
+        line 40: 189
+      StackMapTable: number_of_entries = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 148
+          locals = [ class TestJavaByteCode, class "[Ljava/lang/String;", int, int, int, long, long, long, double, double, double ]
+          stack = []
+        frame_type = 12 /* same */
+
+  public void doLoop();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: iconst_1
+         1: istore_1
+         2: iconst_0
+         3: istore_2
+         4: iload_2
+         5: bipush        100
+         7: if_icmpge     20
+        10: iload_1
+        11: iload_2
+        12: iadd
+        13: istore_1
+        14: iinc          2, 1
+        17: goto          4
+        20: getstatic     #8                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        23: iload_1
+        24: invokevirtual #9                  // Method java/io/PrintStream.println:(I)V
+        27: return
+      LineNumberTable:
+        line 43: 0
+        line 44: 2
+        line 45: 10
+        line 44: 14
+        line 47: 20
+        line 48: 27
+      StackMapTable: number_of_entries = 2
+        frame_type = 253 /* append */
+          offset_delta = 4
+          locals = [ int, int ]
+        frame_type = 250 /* chop */
+          offset_delta = 15
+
+  static {};
+    descriptor: ()V
+    flags: ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: ldc           #41                 // String static
+         2: putstatic     #25                 // Field b:Ljava/lang/String;
+         5: return
+      LineNumberTable:
+        line 4: 0
+}
+SourceFile: "TestJavaByteCode.java"
+InnerClasses:
+     public static final #132= #131 of #135; //Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+BootstrapMethods:
+  0: #87 invokestatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #88 ()V
+      #89 invokespecial TestJavaByteCode.lambda$main$0:()V
+      #88 ()V
