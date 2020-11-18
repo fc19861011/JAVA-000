@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <bean id="test01" class="">
+        <property name="str" value="HELLO" />
+        <property name="test" value="test02" />
+    </bean>
+
+    <bean id="test02" class="">
+        <property name="str" value="F.C" />
+    </bean>
+
+    https://blog.csdn.net/xiamizy/article/details/38817505
+
+    AbstractBeanDefinitionReader 读取配置文件
+    注意看日志：AbstractBeanDefinitionReader
+</beans>
