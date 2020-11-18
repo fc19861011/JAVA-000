@@ -2,6 +2,8 @@ package com.walker.bean.factory.config;
 
 import lombok.Data;
 
+import java.util.Set;
+
 /**
  * bean定义信息
  *
@@ -12,4 +14,5 @@ import lombok.Data;
 public class BeanDefinition {
     private String beanId;
     private String classpath;
+    Set<BeanDefinitionProps> props;
 }
