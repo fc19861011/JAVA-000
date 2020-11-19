@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a541ecfd-57d1-4ad4-a523-c1b1679d12d0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Week_01/homework/one/TestJavaByteCode.java" afterPath="$PROJECT_DIR$/Week_01/homework/one/TestJavaByteCode.java" />
-    </list>
+    <list default="true" id="a541ecfd-57d1-4ad4-a523-c1b1679d12d0" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/Week_05/homework/01/xml/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,104 +15,107 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="HttpServer03.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Week_02/course/nio01/src/main/java/java0/nio01/HttpServer03.java">
+      <file leaf-file-name="AnnotationContext.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/context/support/AnnotationContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+            <state relative-caret-position="192">
+              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RouteInboundHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Week_03/homework/nio02/src/main/java/io/github/kimmking/gateway/inbound/RouteInboundHandler.java">
+      <file leaf-file-name="BeanDefinitionReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/support/BeanDefinitionReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+            <state relative-caret-position="318">
+              <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThreadTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Week_03/threadTest/ThreadTest.java">
+      <file leaf-file-name="DefaultListableBeanFactory.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/support/DefaultListableBeanFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CountDownLatch.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/concurrent/CountDownLatch.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="290" column="21" lean-forward="false" selection-start-line="290" selection-start-column="21" selection-end-line="290" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CountDownLatchRelease.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Week_04/homework/0402/src/main/java/com/power/threadTools/CountDownLatchRelease.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractQueuedSynchronizer.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="637" column="17" lean-forward="false" selection-start-line="637" selection-start-column="17" selection-end-line="637" selection-end-column="17" />
+            <state relative-caret-position="337">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
-                <element signature="e#44444#44445#0" expanded="true" />
-                <element signature="e#44501#44502#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#736#737#0" expanded="true" />
+                <element signature="e#791#792#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestJavaByteCode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Week_01/homework/one/TestJavaByteCode.java">
+      <file leaf-file-name="BeanFactoryPostProcessor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/config/BeanFactoryPostProcessor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeanDefinitionProps.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/config/BeanDefinitionProps.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeanDefinition.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/config/BeanDefinition.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeanFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/BeanFactory.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="224">
-              <caret line="22" column="22" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <caret line="7" column="32" lean-forward="true" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="classcode.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Week_01/homework/one/classcode.txt">
+      <file leaf-file-name="ClassPathXmlApplicationContext.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/context/support/ClassPathXmlApplicationContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+            <state relative-caret-position="191">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CachedThreadPoolRelease.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Week_04/homework/0402/src/main/java/com/power/runable/CachedThreadPoolRelease.java">
+      <file leaf-file-name="Test01.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/test/Test01.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="192">
-              <caret line="44" column="8" lean-forward="false" selection-start-line="44" selection-start-column="8" selection-end-line="46" selection-end-column="9" />
+              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UnsupportedOperationException.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/UnsupportedOperationException.java">
+      <file leaf-file-name="Test02.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/test/Test02.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="41" column="11" lean-forward="false" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
+            <state relative-caret-position="192">
+              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -150,6 +152,10 @@
       <list>
         <option value="$PROJECT_DIR$/Week_03/threadTest/ThreadTest.java" />
         <option value="$PROJECT_DIR$/Week_01/homework/one/TestJavaByteCode.java" />
+        <option value="$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/config/BeanDefinitionProps.java" />
+        <option value="$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/config/BeanDefinition.java" />
+        <option value="$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/BeanFactory.java" />
+        <option value="$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/support/DefaultListableBeanFactory.java" />
       </list>
     </option>
   </component>
@@ -173,7 +179,7 @@
     <option name="width" value="1942" />
     <option name="height" value="1102" />
   </component>
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
@@ -191,8 +197,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -204,73 +211,55 @@
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_01" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_01" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
               <item name="homework" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_01" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
               <item name="homework" type="462c0819:PsiDirectoryNode" />
-              <item name="one" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_03" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_03" type="462c0819:PsiDirectoryNode" />
-              <item name="threadTest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_04" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_04" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
               <item name="homework" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_04" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
               <item name="homework" type="462c0819:PsiDirectoryNode" />
-              <item name="0402" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_04" type="462c0819:PsiDirectoryNode" />
-              <item name="homework" type="462c0819:PsiDirectoryNode" />
-              <item name="0402" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_04" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
               <item name="homework" type="462c0819:PsiDirectoryNode" />
-              <item name="0402" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_04" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
               <item name="homework" type="462c0819:PsiDirectoryNode" />
-              <item name="0402" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -278,106 +267,99 @@
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_04" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
               <item name="homework" type="462c0819:PsiDirectoryNode" />
-              <item name="0402" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="walker" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_04" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
               <item name="homework" type="462c0819:PsiDirectoryNode" />
-              <item name="0402" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="power" type="462c0819:PsiDirectoryNode" />
+              <item name="walker" type="462c0819:PsiDirectoryNode" />
+              <item name="annotation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_04" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
               <item name="homework" type="462c0819:PsiDirectoryNode" />
-              <item name="0402" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="power" type="462c0819:PsiDirectoryNode" />
-              <item name="runable" type="462c0819:PsiDirectoryNode" />
+              <item name="walker" type="462c0819:PsiDirectoryNode" />
+              <item name="factory" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
-              <item name="Week_04" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
               <item name="homework" type="462c0819:PsiDirectoryNode" />
-              <item name="0402" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="power" type="462c0819:PsiDirectoryNode" />
-              <item name="threadTools" type="462c0819:PsiDirectoryNode" />
+              <item name="walker" type="462c0819:PsiDirectoryNode" />
+              <item name="factory" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
+              <item name="homework" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="walker" type="462c0819:PsiDirectoryNode" />
+              <item name="factory" type="462c0819:PsiDirectoryNode" />
+              <item name="support" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
+              <item name="homework" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="walker" type="462c0819:PsiDirectoryNode" />
+              <item name="support" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="JAVA-000" type="462c0819:PsiDirectoryNode" />
+              <item name="Week_05" type="462c0819:PsiDirectoryNode" />
+              <item name="homework" type="462c0819:PsiDirectoryNode" />
+              <item name="01" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JAVA-000" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
-              <item name="locks" type="462c0819:PsiDirectoryNode" />
+              <item name="walker" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -385,8 +367,8 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../javaCourse00/JavaCourseCodes" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Week_05/homework/01/xml" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -438,6 +420,57 @@
       <module name="" />
       <envs />
     </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -458,11 +491,70 @@
       <envs />
       <patterns />
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -498,6 +590,49 @@
       <properties />
       <listeners />
     </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <module />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
     <recent_temporary>
       <list size="1">
         <item index="0" class="java.lang.String" itemvalue="Application.ThreadTest" />
@@ -517,14 +652,25 @@
       <workItem from="1604821998816" duration="7622000" />
       <workItem from="1605442179098" duration="598000" />
       <workItem from="1605528069746" duration="4261000" />
+      <workItem from="1605617292460" duration="837000" />
+      <workItem from="1605620109901" duration="516000" />
+      <workItem from="1605711345516" duration="3822000" />
     </task>
+    <task id="LOCAL-00001" summary="dev homework for week05">
+      <created>1605715194787</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605715194788</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12481000" />
+    <option name="totallyTimeSpent" value="17656000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
+    <frame x="-9" y="-9" width="1842" height="1098" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -535,11 +681,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32868758" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32814237" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19903433" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25904977" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -548,7 +694,7 @@
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975113" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -564,11 +710,114 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="dev homework for week05" />
+    <option name="LAST_COMMIT_MESSAGE" value="dev homework for week05" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Week_04/homework/0402/src/main/java/com/power/runable/CachedThreadPoolRelease.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1344">
+          <caret line="44" column="8" lean-forward="false" selection-start-line="44" selection-start-column="8" selection-end-line="46" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/UnsupportedOperationException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="41" column="11" lean-forward="false" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_01/homework/one/classcode.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4064">
+          <caret line="127" column="30" lean-forward="true" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_02/course/nio01/src/main/java/java0/nio01/HttpServer03.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_03/homework/nio02/src/main/java/io/github/kimmking/gateway/inbound/RouteInboundHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/concurrent/CountDownLatch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8000">
+          <caret line="290" column="21" lean-forward="false" selection-start-line="290" selection-start-column="21" selection-end-line="290" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_04/homework/0402/src/main/java/com/power/threadTools/CountDownLatchRelease.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20384">
+          <caret line="637" column="17" lean-forward="false" selection-start-line="637" selection-start-column="17" selection-end-line="637" selection-end-column="17" />
+          <folding>
+            <element signature="e#44444#44445#0" expanded="false" />
+            <element signature="e#44501#44502#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_01/homework/one/TestJavaByteCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="22" column="22" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_04/homework/0402/src/main/java/com/power/runable/CachedThreadPoolRelease.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1344">
+          <caret line="44" column="8" lean-forward="false" selection-start-line="44" selection-start-column="8" selection-end-line="46" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/UnsupportedOperationException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="41" column="11" lean-forward="false" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_01/homework/one/classcode.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Week_02/course/nio01/src/main/java/java0/nio01/HttpServer03.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
@@ -581,7 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -589,7 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="640">
           <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -597,7 +844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
           <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -605,7 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1856">
           <caret line="58" column="1" lean-forward="false" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -637,7 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -645,7 +889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="640">
           <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -653,7 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
           <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -661,7 +903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1856">
           <caret line="58" column="1" lean-forward="false" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -685,7 +926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -693,7 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
           <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -701,7 +940,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1440">
           <caret line="58" column="1" lean-forward="false" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -709,7 +947,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -721,17 +958,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Week_03/threadTest/ThreadTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/UnsupportedOperationException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
+        <state relative-caret-position="576">
           <caret line="41" column="11" lean-forward="false" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
           <folding />
         </state>
@@ -739,7 +968,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Week_03/homework/nio02/src/main/java/io/github/kimmking/gateway/inbound/RouteInboundHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
+        <state relative-caret-position="1088">
           <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
           <folding />
         </state>
@@ -747,7 +976,7 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/concurrent/CountDownLatch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="8000">
           <caret line="290" column="21" lean-forward="false" selection-start-line="290" selection-start-column="21" selection-end-line="290" selection-end-column="21" />
           <folding />
         </state>
@@ -755,7 +984,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Week_04/homework/0402/src/main/java/com/power/threadTools/CountDownLatchRelease.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
+        <state relative-caret-position="800">
           <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="36" />
           <folding />
         </state>
@@ -763,18 +992,18 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="19008">
           <caret line="637" column="17" lean-forward="false" selection-start-line="637" selection-start-column="17" selection-end-line="637" selection-end-column="17" />
           <folding>
-            <element signature="e#44444#44445#0" expanded="true" />
-            <element signature="e#44501#44502#0" expanded="true" />
+            <element signature="e#44444#44445#0" expanded="false" />
+            <element signature="e#44501#44502#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Week_04/homework/0402/src/main/java/com/power/runable/CachedThreadPoolRelease.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
+        <state relative-caret-position="1344">
           <caret line="44" column="8" lean-forward="false" selection-start-line="44" selection-start-column="8" selection-end-line="46" selection-end-column="9" />
           <folding />
         </state>
@@ -782,17 +1011,119 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Week_01/homework/one/TestJavaByteCode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="22" column="22" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state relative-caret-position="704">
+          <caret line="22" column="22" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Week_01/homework/one/classcode.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+        <state relative-caret-position="-1164">
+          <caret line="37" column="15" lean-forward="false" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_03/threadTest/ThreadTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/annotation/Bean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/test/Test01.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/test/Test02.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/context/support/ClassPathXmlApplicationContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/context/support/AnnotationContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/support/BeanDefinitionReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/config/BeanFactoryPostProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/config/BeanDefinitionProps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/config/BeanDefinition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/BeanFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="7" column="32" lean-forward="true" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week_05/homework/01/xml/src/main/java/com/walker/bean/factory/support/DefaultListableBeanFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -849,7 +1180,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>threadTest</last-edited>
+          <last-edited>com-walker-bean-xml</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -874,6 +1205,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>cms</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
