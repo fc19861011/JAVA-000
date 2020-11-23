@@ -1,7 +1,5 @@
 package com.walker.bean.factory.config;
 
-import com.walker.bean.factory.config.BeanDefinition;
-
 /**
  * Bean定义注册接口
  * BeanFactory的行为接口

@@ -130,6 +130,8 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry, 
      * @throws InstantiationException
      */
     private Object createInstanceByConstructor(BeanDefinition bd) throws IllegalAccessException, InstantiationException {
+        // TODO: 1、获取参数
+        // TODO: 2、构造器筛选  isAssignableFrom方法
         try {
             return bd.getBeanClass().newInstance();
         } catch (SecurityException e) {

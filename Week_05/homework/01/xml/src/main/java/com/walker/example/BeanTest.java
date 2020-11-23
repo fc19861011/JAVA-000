@@ -10,6 +10,6 @@ public class BeanTest {
     }
 
     public void destroy() {
-        System.out.println("destroy");
+        System.out.println("我是destroy方法");
     }
 }

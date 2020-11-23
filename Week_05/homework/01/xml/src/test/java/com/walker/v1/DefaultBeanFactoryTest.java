@@ -4,13 +4,18 @@ package com.walker.v1;
 import com.walker.bean.factory.config.BeanDefinition;
 import com.walker.bean.factory.support.DefaultBeanFactory;
 import com.walker.bean.factory.support.GenericBeanDefinition;
+import com.walker.bean.factory.support.PreBuildBeanFactory;
 import com.walker.example.BeanTest;
 import com.walker.example.FactoryBeanTest;
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.IOException;
+
 public class DefaultBeanFactoryTest {
-    static DefaultBeanFactory dbf = new DefaultBeanFactory();
+//    static DefaultBeanFactory dbf = new DefaultBeanFactory();
+    static PreBuildBeanFactory dbf = new PreBuildBeanFactory();
 
     @Test
     public void testRegistBeanDefinition() throws Exception {
@@ -57,6 +62,8 @@ public class DefaultBeanFactoryTest {
     @AfterClass
     public static void testGetBean() throws Exception {
 
+        dbf.preInstantiateSingletons();
+
         System.out.println("构造方法");
         for (int i = 0; i < 3; i++) {
             BeanTest beanTest = (BeanTest) dbf.getBean("beantest");
@@ -75,7 +82,15 @@ public class DefaultBeanFactoryTest {
             beanTest.doSomthing();
         }
 
-        dbf.close();
+//        dbf.close();
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Hook shutdown");
+            try {
+                dbf.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }));
     }
 }
 

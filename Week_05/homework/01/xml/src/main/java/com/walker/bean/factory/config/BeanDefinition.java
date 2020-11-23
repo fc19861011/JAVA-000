@@ -2,6 +2,8 @@ package com.walker.bean.factory.config;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.List;
+
 /**
  * bean定义信息接口
  *
@@ -38,6 +40,13 @@ public interface BeanDefinition {
     boolean isSingleton();
 
     /**
+     * 是否是多例
+     *
+     * @return
+     */
+    boolean isPrototype();
+
+    /**
      * 工厂beanName
      *
      * @return
@@ -65,6 +74,21 @@ public interface BeanDefinition {
      */
     String getDestroyMethodName();
 
+    /**
+     * 根据class类型获取bean对象时，
+     * 如果有多个同类型的对象，
+     * 优先使用isPrimary为true的对象。
+     *
+     * @return
+     */
+    boolean isPrimary();
+
+    /**
+     * 获取构造器参数信息列表
+     *
+     * @return
+     */
+    List<?> getConstructorArgumentValues();
 
     /**
      * 校验bean定义的合法性
