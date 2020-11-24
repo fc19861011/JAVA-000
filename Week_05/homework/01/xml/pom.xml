@@ -18,6 +18,13 @@
   </properties>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.10</version>
+    </dependency>
+
     <!--Lombok-->
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -25,6 +32,19 @@
       <version>1.16.10</version>
       <scope>provided</scope>
     </dependency>
+
+      <!-- https://mvnrepository.com/artifact/junit/junit -->
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.13.1</version>
+          <scope>test</scope>
+      </dependency>
+
+      <!--
+        https://search.bilibili.com/all?keyword=%E6%89%8B%E5%86%99Spring%E8%AE%AD%E7%BB%83%E8%90%A5&from_source=nav_search_new
+       -->
+
   </dependencies>
 
   <build>
