@@ -211,25 +211,41 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry, 
     @Override
     public <T> T getBean(Class<T> beanClass) throws Exception {
         Set<String> beanNames = this.typeMap.get(beanClass);
+        Objects.requireNonNull(beanNames, "没有找到该类型的bean:" + beanClass);
+        if (beanNames.size() == 1) {
+            return (T) getBean(beanNames.iterator().next());
+        }
+        String primaryBeanName = null;
         for (String beanName : beanNames) {
             BeanDefinition beanDefinition = getBeanDefinition(beanName);
-            if (beanDefinition.isPrimary()) {
-                return (T) getBean(beanName);
+            if (beanDefinition != null && beanDefinition.isPrimary()) {
+                if (primaryBeanName != null) {
+                    throw new Exception(beanClass + "类型的bean存在多个primary的定义");
+                } else {
+                    primaryBeanName = beanName;
+                }
             }
         }
-        throw new Exception("没有找到对应class类型的bean实例对象: " + beanClass.getCanonicalName());
+        if (primaryBeanName != null) {
+            return (T) getBean(primaryBeanName);
+        } else {
+            throw new Exception(beanClass + "类型的bean存在多个，但没有设置primary的bean");
+        }
     }
 
     @Override
     public <T> Map<String, T> getBeansOfType(Class<T> beanClass) throws Exception {
         Set<String> beanNames = this.typeMap.get(beanClass);
-        final Map<String, T> results = new HashMap<>(beanNames.size());
-        beanNames.forEach(beanName -> {
-            try {
-                results.put(beanName, (T) getBean(beanName));
-            } catch (Exception e) {}
-        });
-        return results;
+        if (beanNames != null) {
+            final Map<String, T> results = new HashMap<>(beanNames.size());
+            beanNames.forEach(beanName -> {
+                try {
+                    results.put(beanName, (T) getBean(beanName));
+                } catch (Exception e) {}
+            });
+            return results;
+        }
+        return null;
     }
 
     /**
