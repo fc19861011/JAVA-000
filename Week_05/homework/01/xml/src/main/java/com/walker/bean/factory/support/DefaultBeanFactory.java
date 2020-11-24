@@ -10,48 +10,49 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author dell
  * @date 2020/11/18 16:56
- * <p>
- * 实现如下内容：
- * 1、实现定义信息注册
- * 2、实现bean工厂
- * 3、实现单例
- * 4、实现容器关闭时执行单例的销毁方法
+ *       <p>
+ *       实现如下内容： 1、实现定义信息注册 2、实现bean工厂 3、实现单例 4、实现容器关闭时执行单例的销毁方法
  **/
 public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry, Closeable {
-
+    /**
+     * beanDefinition的集合( [key | beanName] - [value | BeanDefinition] )
+     */
     Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>(256);
+    /**
+     * 单例的对象集合( [key | beanName] - [value | bean实例] )
+     */
     Map<String, Object> singletonBeanMap = new ConcurrentHashMap<>(255);
+    /**
+     * 类类型与beanName对应关系的集合( [key | bean对象类型] - [value | beanNames] )
+     */
+    Map<Class<?>, Set<String>> typeMap = new ConcurrentHashMap<>(255);
 
     @Override
     public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition) {
         /**
-         * 需要思考的问题
-         * 1、如何存储BeanDefinition？
-         *  Map<String, BeanDefinition>
-         * 2、beanName重复如何处理？
-         *   - 允许重名，可以覆盖
-         *   - 不允许重名，直接抛异常
-         *   （spring默认抛异常，可通过参数：spring.main.allow-bean-definition-overriding:true；来允许覆盖）
+         * 需要思考的问题 1、如何存储BeanDefinition？ Map<String, BeanDefinition> 2、beanName重复如何处理？ - 允许重名，可以覆盖 -
+         * 不允许重名，直接抛异常 （spring默认抛异常，可通过参数：spring.main.allow-bean-definition-overriding:true；来允许覆盖）
          * 3、这里需要做什么
          */
         Objects.requireNonNull(beanName, "注册bean需要给入beanName");
         Objects.requireNonNull(beanDefinition, "注册bean需要给入beanDefinition");
         if (!beanDefinition.validate()) {
-            throw new BeanDefinitionRegistryException("名字为[" + beanName + "]的bean定义不合法：" + beanDefinition.toString());
+            throw new BeanDefinitionRegistryException(
+                    "名字为[" + beanName + "]的bean定义不合法：" + beanDefinition.toString());
         }
 
         /**
          * 不允许beanName重复
          */
         if (this.containsBeanDefinition(beanName)) {
-            throw new BeanDefinitionRegistryException("名字为[" + beanName + "]的bean定义已存在：" + this.getBeanDefinition(beanName));
+            throw new BeanDefinitionRegistryException(
+                    "名字为[" + beanName + "]的bean定义已存在：" + this.getBeanDefinition(beanName));
         }
 
         this.beanDefinitionMap.put(beanName, beanDefinition);
@@ -129,9 +130,10 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry, 
      * @throws IllegalAccessException
      * @throws InstantiationException
      */
-    private Object createInstanceByConstructor(BeanDefinition bd) throws IllegalAccessException, InstantiationException {
+    private Object createInstanceByConstructor(BeanDefinition bd)
+            throws IllegalAccessException, InstantiationException {
         // TODO: 1、获取参数
-        // TODO: 2、构造器筛选  isAssignableFrom方法
+        // TODO: 2、构造器筛选 isAssignableFrom方法
         try {
             return bd.getBeanClass().newInstance();
         } catch (SecurityException e) {
@@ -150,7 +152,8 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry, 
      * @throws InvocationTargetException
      * @throws IllegalAccessException
      */
-    private Object createInstanceByStaticFactoryMethod(BeanDefinition bd) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    private Object createInstanceByStaticFactoryMethod(BeanDefinition bd)
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Class<?> type = bd.getBeanClass();
         Method m = type.getMethod(bd.getFactoryMethodName(), null);
         return m.invoke(type, null);
@@ -185,6 +188,99 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry, 
     }
 
     @Override
+    public Class<?> getType(String beanName) throws Exception {
+        BeanDefinition bd = this.getBeanDefinition(beanName);
+        Class<?> type = bd.getBeanClass();
+        if (type != null) {
+            if (StringUtils.isBlank(bd.getFactoryMethodName())) {
+                // 通过构造方法来实例化bean
+                // 无需操作
+            } else {
+                // 通过静态工厂方法来实例化bean
+                type = type.getDeclaredMethod(bd.getFactoryMethodName(), null).getReturnType();
+            }
+        } else {
+            // 通过工厂bean中的成员方法来实例化bean
+            // 先要获取工厂bean对象
+            type = this.getType(bd.getFactoryBeanName());
+            type = type.getDeclaredMethod(bd.getFactoryMethodName(), null).getReturnType();
+        }
+        return type;
+    }
+
+    @Override
+    public <T> T getBean(Class<T> beanClass) throws Exception {
+        Set<String> beanNames = this.typeMap.get(beanClass);
+        for (String beanName : beanNames) {
+            BeanDefinition beanDefinition = getBeanDefinition(beanName);
+            if (beanDefinition.isPrimary()) {
+                return (T) getBean(beanName);
+            }
+        }
+        throw new Exception("没有找到对应class类型的bean实例对象: " + beanClass.getCanonicalName());
+    }
+
+    @Override
+    public <T> Map<String, T> getBeansOfType(Class<T> beanClass) throws Exception {
+        Set<String> beanNames = this.typeMap.get(beanClass);
+        final Map<String, T> results = new HashMap<>(beanNames.size());
+        beanNames.forEach(beanName -> {
+            try {
+                results.put(beanName, (T) getBean(beanName));
+            } catch (Exception e) {}
+        });
+        return results;
+    }
+
+    /**
+     * 注冊bean类型的map集合（需要在beandefinition都注册完成后再执行）
+     * 
+     * @throws Exception
+     */
+    public void registerTypeMap() throws Exception {
+        for (String beanName : this.beanDefinitionMap.keySet()) {
+            Class<?> type = this.getType(beanName);
+            // 映射本类
+            this.registerTypeMap(beanName, type);
+            // 还需考虑父类
+            this.registerSuperTypeMap(beanName, type);
+            // 还需考虑其接口
+            this.registerInterfaceTypeMap(beanName, type);
+        }
+    }
+
+    public void registerTypeMap(String beanName, Class<?> type) throws Exception {
+        Set<String> beanNames = this.typeMap.get(type);
+        if (beanNames == null) {
+            beanNames = new HashSet<>();
+            this.typeMap.put(type, beanNames);
+        }
+        beanNames.add(beanName);
+    }
+
+    public void registerSuperTypeMap(String beanName, Class<?> type) throws Exception {
+        Class superClass = type.getSuperclass();
+        Objects.requireNonNull(superClass, "父类为空");
+        if (superClass != null && !superClass.equals(Object.class)) {
+            this.registerTypeMap(beanName, superClass);
+            this.registerSuperTypeMap(beanName, superClass);
+            this.registerInterfaceTypeMap(beanName, superClass);
+        }
+    }
+
+    public void registerInterfaceTypeMap(String beanName, Class<?> type) throws Exception {
+        Class[] interfaces = type.getInterfaces();
+        if (interfaces.length > 0) {
+            for (Class iface : interfaces) {
+                this.registerTypeMap(beanName, iface);
+                this.registerInterfaceTypeMap(beanName, iface);
+            }
+        }
+    }
+
+
+
+    @Override
     public void close() throws IOException {
         // 执行单例实例的销毁
         for (Map.Entry<String, BeanDefinition> e : this.beanDefinitionMap.entrySet()) {
@@ -197,7 +293,8 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry, 
                     try {
                         Method m = instance.getClass().getMethod(bd.getDestroyMethodName(), null);
                         m.invoke(instance, null);
-                    } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e1) {
+                    } catch (NoSuchMethodException | IllegalAccessException
+                            | InvocationTargetException e1) {
                         System.err.println("执行bean[" + beanName + "]的销毁方法异常");
                         e1.printStackTrace();
                     }

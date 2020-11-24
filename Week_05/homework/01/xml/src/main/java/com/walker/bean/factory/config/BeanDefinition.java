@@ -91,6 +91,12 @@ public interface BeanDefinition {
     List<?> getConstructorArgumentValues();
 
     /**
+     * 获取bean对应关系
+     * @return
+     */
+    List<BeanReference> getBeanReferences();
+
+    /**
      * 校验bean定义的合法性
      *
      * @return

@@ -1,5 +1,9 @@
 package com.walker.bean.factory.config;
 
+/**
+ * IOC注入对象的关系
+ * @author F.C
+ */
 public class BeanReference {
     String beanName;
 

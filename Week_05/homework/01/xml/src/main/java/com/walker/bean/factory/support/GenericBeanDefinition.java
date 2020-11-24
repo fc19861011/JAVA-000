@@ -1,7 +1,10 @@
 package com.walker.bean.factory.support;
 
 import com.walker.bean.factory.config.BeanDefinition;
+import com.walker.bean.factory.config.BeanReference;
 import lombok.Setter;
+
+import java.util.List;
 
 @Setter
 public class GenericBeanDefinition implements BeanDefinition {
@@ -10,7 +13,14 @@ public class GenericBeanDefinition implements BeanDefinition {
     String factoryMethodName;
     String initMethodName;
     String destroyMethodName;
-    String scope;
+    String scope = BeanDefinition.SCOPE_SINGLETON;
+
+    public void setPrimary(boolean primary) {
+        this.primary = primary;
+    }
+
+    boolean primary = false;
+    List<?> constructorArgumentValues;
 
     @Override
     public Class<?> getBeanClass() {
@@ -25,6 +35,12 @@ public class GenericBeanDefinition implements BeanDefinition {
     @Override
     public boolean isSingleton() {
         return BeanDefinition.SCOPE_SINGLETON.equals(getScope()) ? true : false;
+    }
+
+
+    @Override
+    public boolean isPrototype() {
+        return BeanDefinition.SCOPE_PROTOTYPE.equals(getScope()) ? true : false;
     }
 
     @Override
@@ -45,6 +61,25 @@ public class GenericBeanDefinition implements BeanDefinition {
     @Override
     public String getDestroyMethodName() {
         return this.destroyMethodName;
+    }
+
+    @Override
+    public boolean isPrimary() {
+        return this.primary;
+    }
+
+    public void setConstructorArgumentValues(List<?> constructorArgumentValues) {
+        this.constructorArgumentValues = constructorArgumentValues;
+    }
+
+    @Override
+    public List<?> getConstructorArgumentValues() {
+        return this.constructorArgumentValues;
+    }
+
+    @Override
+    public List<BeanReference> getBeanReferences() {
+        return null;
     }
 
 }

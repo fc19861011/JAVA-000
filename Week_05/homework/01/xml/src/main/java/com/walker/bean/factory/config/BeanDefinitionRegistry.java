@@ -3,6 +3,7 @@ package com.walker.bean.factory.config;
 /**
  * Bean定义注册接口
  * BeanFactory的行为接口
+ * @author F.C
  */
 public interface BeanDefinitionRegistry {
     /**
