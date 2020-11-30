@@ -115,7 +115,94 @@ https://downloads.mysql.com/archives/community/
    1. win+r打开“运行”，输入regedit，打开注册表
    2. 到这个目录：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services下找到需要删除的服务，右键删除，重启系统后生效。
 
-### 三、参考文献
+### 三、Docker 安装
+
+> Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。社区版是免费提供给个人开发者和小型团体使用的，企业版会提供额外的收费服务，比如经过官方测试认证过的基础设施、容器、插件等。社区版按照stable和edge两种方式发布，每个季度更新stable版本，如17.06，17.09；每个月份更新edge版本，如17.09，17.10。
+>
+> 以下为linux中安装docker ce版本
+
+#### 3.1 安装docker（简单粗暴的方式）
+
+**注意：**Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。
+
+1. 切换cetos yum源
+
+2. 安装docker-ce版本
+
+   ```shell
+   yum -y install docker-ce
+   # 设置开机启动
+   systemctl enable docker
+   # 启动docker
+   systemctl start docker
+   ```
+
+3. 启动docker
+
+   ```shell
+   service docker start
+   ```
+
+#### 3.2 安装docker-compose
+
+```shell
+sudo curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+#### 3.3 安装mysql
+
+1. docker hub网站中寻找mysql的镜像（https://hub.docker.com/_/mysql?tab=tags&page=1&ordering=last_updated）
+2. 在tags中找到自己需要的版本
+
+![image-20201130174635659](.\img\docker-hub.png)
+
+3. 编写compse文件(Description选项卡中有参考版本)，文件名docker-compose.yml
+
+   ```yaml
+   # Use root/example as user/password credentials
+   version: '3.1'
+   services:
+     db:
+       image: mysql:5.7.29
+       ports:
+         - "3306:3306"
+       environment:                                        
+         MYSQL_ROOT_PASSWORD: root
+         MYSQL_USER: 'scotter'
+         MYSQL_PASS: 'scotter'
+       command:
+         --default-authentication-plugin=mysql_native_password
+         --character-set-server=utf8mb4
+         --collation-server=utf8mb4_general_ci
+         --explicit_defaults_for_timestamp=true
+         --lower_case_table_names=1
+       restart: always
+       volumes::
+         - "/etc/localtime:/etc/localtime"
+         - "[宿主主机目录]:/var/lib/mysql"
+         - "[宿主主机目录，启动后进行初始化的语句]:/docker-entrypoint-initdb.d"
+         - "[宿主主机目录，mysql配置文件目录]:/etc/mysql/conf.d"
+   
+   ```
+
+4. 将compose文件上传到系统中，然后在该文件所在目录下执行docker compose的命令来安装mysql
+
+   ```shell
+   #（如果要看建立过程日志可以不加-d）
+   docker-compose up -d
+   # 停止容器
+   docker-compose stop 
+   # 启动容器
+   docker-compose start 
+   # 删除容器
+   docker-compose rm -f 
+   ```
+
+5. 如果要安装多个mysql，只需复制compose文件即可，修改映射的端口号以及volumes，多个compose文件不要放在同一个目录
+
+### 四、参考文献
 
 https://blog.csdn.net/weixin_43395911/article/details/99702121
 
