@@ -5,7 +5,7 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.date.TimeInterval;
 import cn.hutool.core.lang.Console;
 import com.walker.insert.domain.OrderInfoEntity;
-import com.walker.insert.service.OrderInfoService;
+import com.walker.insert.service.OrderInfoJPAService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +20,10 @@ import java.util.List;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = InsertTest.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class AppTest {
+public class JpaInsertTest {
     @Autowired
-    OrderInfoService orderInfoService;
-    private final int totalNum = 1_000_000;
+    OrderInfoJPAService orderInfoJPAService;
+    private final int totalNum = 1000000;
 
     @Test
     public void TestSingeInsert() {
@@ -42,7 +42,7 @@ public class AppTest {
             orderInfoEntity.setMerchantName("merchantName"+i);
             orderInfoEntity.setCustomerId(Long.valueOf(i));
             orderInfoEntity.setCustomerName("customerName"+i);
-            orderInfoService.insert(orderInfoEntity);
+            orderInfoJPAService.insert(orderInfoEntity);
         }
         Console.log("花费时间：", timer.interval());
     }
@@ -67,7 +67,7 @@ public class AppTest {
             orderInfoEntity.setCustomerName("customerName"+i);
             orderInfoEntities.add(orderInfoEntity);
         }
-        orderInfoService.insertBatch(orderInfoEntities);
+        orderInfoJPAService.insertBatch(orderInfoEntities);
         Console.log("花费时间：", timer.interval());
     }
 
@@ -93,12 +93,12 @@ public class AppTest {
             orderInfoEntity.setCustomerName("customerName"+i);
             orderInfoEntities.add(orderInfoEntity);
             if((i+1) % batch_size == 0) {
-                orderInfoService.insertBatch(orderInfoEntities);
+                orderInfoJPAService.insertBatch(orderInfoEntities);
                 orderInfoEntities.clear();
             }
         }
         if(orderInfoEntities.size() > 0) {
-            orderInfoService.insertBatch(orderInfoEntities);
+            orderInfoJPAService.insertBatch(orderInfoEntities);
         }
         Console.log("花费时间：", timer.interval());
     }

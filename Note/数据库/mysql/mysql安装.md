@@ -89,7 +89,7 @@ https://downloads.mysql.com/archives/community/
 
    **手动到windows的服务中启动（services.msc）**
 
-   ![1606655586837](C:\fcwalker\github\JAVA-000\Note\数据库\mysql\img\setup_03.png)
+   ![1606655586837](.\img\setup_03.png)
 
    6. 修改root密码，使用命令行进行修改
 

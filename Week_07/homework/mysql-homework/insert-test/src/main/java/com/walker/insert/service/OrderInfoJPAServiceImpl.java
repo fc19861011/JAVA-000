@@ -16,7 +16,7 @@ import java.util.List;
  **/
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class OrderInfoServiceImpl implements OrderInfoService {
+public class OrderInfoJPAServiceImpl implements OrderInfoJPAService {
 
     @Autowired
     EntityManager entityManager;

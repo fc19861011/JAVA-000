@@ -91,7 +91,7 @@ https://downloads.mysql.com/archives/community/
 
    **手动到windows的服务中启动（services.msc）**
 
-   ![1606655586837](C:\fcwalker\github\JAVA-000\Note\数据库\mysql\img\setup_03.png)
+   ![1606655586837](.\img\setup_03.png)
 
    6. 修改root密码，使用命令行进行修改
 
@@ -287,7 +287,7 @@ COMMIT;
 END
 ```
 
-### 1.2 单个事务一个insert into xx values (),(),()...的方式
+### 1.2 insert into xx values (),(),()...的方式
 
 #### 测试情况
 
@@ -301,15 +301,21 @@ END
 | 2000                     | 41.674s  | 500          |
 | 5000                     | 67.447s  | 200          |
 | 10000                    | 109.098s | 100          |
+| 1000000                  | 8.601s   | 1            |
 
 #### 存储过程代码
 
 ```sql
-CREATE DEFINER = `mail` @`%` PROCEDURE `order_data_batch_init` ( IN `batch_num` INT ) BEGIN
+CREATE DEFINER=`mail`@`%` PROCEDURE `order_data_batch_init2`( IN `batch_num` INT )
+BEGIN
 DECLARE
 	i INT;
 DECLARE
+	num INT;
+DECLARE
 	SQL_FOR_INSERT LONGBLOB;
+
+SET num = 0;
 
 SET i = 0;
 WHILE
@@ -389,7 +395,11 @@ IF
 	EXECUTE stmt;-- 执行sql语句
 	DEALLOCATE PREPARE stmt;-- 释放prepare
 	COMMIT;
+	
+	SET num = num + 1;
+	
 	ELSEIF ( i = 999999 ) THEN
+	
 	SET @SQL = SQL_FOR_INSERT;
 	PREPARE stmt 
 	FROM
@@ -397,9 +407,17 @@ IF
 	EXECUTE stmt;-- 执行sql语句
 	DEALLOCATE PREPARE stmt;-- 释放prepare
 	COMMIT;
+	
+	SET num = num + 1;
+	
 END IF;
+
 SET i = i + 1;
+
 END WHILE;
+SELECT
+	num;
+
 END
 ```
 
@@ -413,11 +431,83 @@ END
 - insert into values (),()..如果values后面的值过多，会增加语法解析的时间，影响性能（对sql的解析引擎不友好）。
 
 ## 批量插入：程序插入
-> 框架使用：springboot、hikari、jpa
+> 框架使用：springboot、hikari
 > 网络情况：局域网、100M
-- 单线程情况下，一个事务提交1000000条耗时：3100944ms
-- 单线程情况下，一个事务提交1000条，共提交1000000条, 耗时:
-- 单线程情况下，一个事务提交1条，共提交1000000条, 耗时:
+### JPA方式
+
+#### 准备工作：
+
+1. 数据连接中加上 logger=Slf4JLogger&profileSQL=true，用来显示 MySQL 执行的 SQL 日志，例如：
+
+   ```yaml
+   url: jdbc:mysql://ip:端口/dbname?useUnicode=true&characterEncoding=utf8&useSSL=false&logger=Slf4JLogger&profileSQL=true
+   ```
+
+2. 打开 Spring 的事务处理日志，用来观察事务的执行过程
+
+   ```yaml
+   logging:
+     level:
+       org:
+         springframework:
+           orm:
+             jpa: DEBUG
+           transaction: trace
+         hibernate:
+           engine:
+             transaction:
+               internal:
+                 TransactionImpl: debug
+           resource:
+             jdbc: trace
+       com:
+         zaxxer:
+           hikari: DEBUG
+   ```
+
+   ![image-20201203094208870](.\img\jpa-tx-logger.png)
+
+#### 结果
+
+- 单线程情况下，一个事务提交1000000条耗时：3_100_944ms
+- 单线程情况下，一个事务提交1000条，共提交1000000条, 耗时:3_968_880ms
+- 单线程情况下，一个事务提交1条，共提交1000000条, 耗时:5_538_787ms
+
+#### 总结：
+
+jpa得插入性能奇差无比，每次save时，先要对对象做存在性检查，在进行插入。
+
+从源码上看批量插入也是进行多次的save操作
+
+```java
+@Transactional
+public <S extends T> List<S> saveAll(Iterable<S> entities) {
+    Assert.notNull(entities, "Entities must not be null!");
+    List<S> result = new ArrayList();
+    Iterator var3 = entities.iterator();
+
+    while(var3.hasNext()) {
+        S entity = var3.next();
+        result.add(this.save(entity));
+    }
+    return result;
+}
+```
+
+### springjdbc方式
+
+#### 准备工作
+
+1. datasource上增加rewriteBatchedStatements=true来开启批量写入
+
+#### 结果
+
+| 每次事务提交的insert数量 | 执行时间 | 执行事务次数 |
+| ------------------------ | -------- | ------------ |
+| 1000000                  | 41483ms  | 1            |
+| 1000                     | 24172ms  | 1000         |
+| 5000                     | 21888ms  | 200          |
+| 10000                    | 25207ms  | 100          |
 
 # 作业二 读写分离 - 动态切换数据源版本 1.0
 来不及了，就这两天补上
