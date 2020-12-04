@@ -27,6 +27,7 @@ public class JdbcInsertTest {
     @Autowired
     OrderInfoJdbcService orderInfoJdbcService;
     private final int totalNum = 1000000;
+    final int batch_size = 8000;
 
     @Test
     public void TestSingeInsert() {
@@ -50,7 +51,7 @@ public class JdbcInsertTest {
         Console.log("花费时间：", timer.interval());
     }
 
-    final int batch_size = 8000;
+
 
     @Test
     public void TestBatchInsert() {
@@ -92,7 +93,8 @@ public class JdbcInsertTest {
         TimeInterval timer = DateUtil.timer();
         int cores = Runtime.getRuntime().availableProcessors() * 2;
         initPool(cores);
-        int batch_num = totalNum / cores;
+//        int batch_num = totalNum / cores;
+        int batch_num = 10000;
         List<OrderInfoEntity> orderInfoEntities = new ArrayList<>();
         for (int i = 0; i < totalNum; i++) {
             OrderInfoEntity orderInfoEntity = new OrderInfoEntity();
@@ -109,7 +111,7 @@ public class JdbcInsertTest {
             orderInfoEntity.setCustomerId(Long.valueOf(i));
             orderInfoEntity.setCustomerName("customerName" + i);
             orderInfoEntities.add(orderInfoEntity);
-            if ((i + 1) % batch_size == 0) {
+            if ((i + 1) % batch_num == 0) {
                 List<OrderInfoEntity> orderInfoEntitiesBak = new ArrayList<>(orderInfoEntities);
                 handle(orderInfoEntitiesBak);
                 orderInfoEntities.clear();
@@ -122,6 +124,7 @@ public class JdbcInsertTest {
         while (!this.saveProxy.isTerminated()) {
         }
         Console.log("花费时间：", timer.interval());
+        Thread.sleep(5000);
     }
 
     private void initPool(final int cores) {
@@ -129,7 +132,7 @@ public class JdbcInsertTest {
         long keepAliveTime = 500;
         int queueSize = 2048;
         RejectedExecutionHandler handler = new ThreadPoolExecutor.CallerRunsPolicy();
-        saveProxy = new ThreadPoolExecutor(cores, cores, keepAliveTime, TimeUnit.MILLISECONDS,
+        saveProxy = new ThreadPoolExecutor(cores, 100, keepAliveTime, TimeUnit.MILLISECONDS,
                 new ArrayBlockingQueue<>(queueSize), new NamedThreadFactory("proxyService"),
                 handler);
     }
