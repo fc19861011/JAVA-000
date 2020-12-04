@@ -27,3 +27,4 @@ workspace.xml
 
 ## Directory-based project format:
 .idea/
+target/

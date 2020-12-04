@@ -3,9 +3,10 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 加上 &logger=Slf4JLogger&profileSQL=true，用来显示 MySQL 执行的 SQL 日志
-    url: jdbc:mysql://192.168.0.119:3306/mail_test?useUnicode=true&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true
-    username: mail
-    password: mail
+    # url: jdbc:mysql://192.168.0.119:3306/mail_test?useUnicode=true&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true
+    url: jdbc:mysql://127.0.0.1:3306/mail?useUnicode=true&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true
+    username: root
+    password: root
     hikari:
       minimum-idle: 5
       # 空闲连接存活最大时间，默认600000（10分钟）

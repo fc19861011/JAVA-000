@@ -36,6 +36,7 @@ public class OrderInfoJdbcServiceImpl implements OrderInfoJdbcService {
 
     @Override
     public void insertBatch(List<OrderInfoEntity> orderInfoEntities) {
+//        TimeInterval timer = DateUtil.timer();
         List<Object[]> values = new ArrayList<>(orderInfoEntities.size());
         for (OrderInfoEntity orderInfoEntity : orderInfoEntities) {
             values.add(
@@ -47,6 +48,7 @@ public class OrderInfoJdbcServiceImpl implements OrderInfoJdbcService {
                             orderInfoEntity.getCustomerId(), orderInfoEntity.getCustomerName()});
         }
         jdbcTemplate.batchUpdate(OrderInfoSql.INSERT_STR, values);
+//        Console.log("批量提交{}数据，所花费时间：{}", orderInfoEntities.size(), timer.interval());
     }
 
 }
