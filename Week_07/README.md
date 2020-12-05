@@ -526,3 +526,5 @@ CPU：4核，由于批量插入是IO密集型的操作，线程池大小推荐�
 ./homework/mysql-homework/mysql-rw-splitting-v1
 
 # 作业三 读写分离 - 数据库框架版本 2.0
+## 作业目录:
+./homework/mysql-homework/sharding-jdbc-example
