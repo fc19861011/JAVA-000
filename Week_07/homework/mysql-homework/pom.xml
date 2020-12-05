@@ -10,6 +10,7 @@
     <modules>
         <module>insert-test</module>
         <module>mysql-rw-splitting-v1</module>
+        <module>sharding-jdbc-example</module>
     </modules>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>

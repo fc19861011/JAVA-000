@@ -1,0 +1,51 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: master, slave01, slave02
+      master:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/shop?logger=Slf4JLogger&profileSQL=true
+        username: root
+        password: root
+      slave01:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3307/shop?logger=Slf4JLogger&profileSQL=true
+        username: root
+        password: root
+      slave02:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3308/shop?logger=Slf4JLogger&profileSQL=true
+        username: root
+        password: root
+    rules:
+      replica-query:
+        data-sources:
+          pr-ds:
+            primary-data-source-name: master
+            replica-data-source-names: slave01, slave02
+            load-balancer-name: round_robin
+        load-balancers:
+          round-robin:
+            type: ROUND_ROBIN
+
+# Log Transactions Details
+logging:
+  level:
+    org:
+      springframework:
+        orm:
+          jpa: DEBUG
+        transaction: trace
+      hibernate:
+        engine:
+          transaction:
+            internal:
+              TransactionImpl: debug
+        resource:
+          jdbc: trace
+    com:
+      zaxxer:
+        hikari: DEBUG
