@@ -35,6 +35,11 @@ public class ShardingExampleTest
     @Test
     public void queryData() {
         List<TestEnity> testEnities = service.queryTestEntitys();
-        System.out.println(testEnities.size());
+        testEnities.forEach(testEnity -> System.out.println(testEnity.getName())
+        );
+
+        testEnities = service.queryTestEntitys();
+        testEnities.forEach(testEnity -> System.out.println(testEnity.getName())
+        );
     }
 }

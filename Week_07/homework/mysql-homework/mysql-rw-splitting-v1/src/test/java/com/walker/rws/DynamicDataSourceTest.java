@@ -36,9 +36,5 @@ public class DynamicDataSourceTest {
         List<TestEnity> testEnities = service.queryTestEntitys();
         testEnities.forEach(testEnity -> System.out.println(testEnity.getName())
         );
-
-        testEnities = service.queryTestEntitys();
-        testEnities.forEach(testEnity -> System.out.println(testEnity.getName())
-        );
     }
 }
