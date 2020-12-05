@@ -20,18 +20,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-
         <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
-
         <spring.checkstyle.version>0.0.22</spring.checkstyle.version>
         <git.commit.version>2.2.5</git.commit.version>
-
-        <jasypt.version>2.1.1</jasypt.version>
-
-        <swagger.core.version>1.5.22</swagger.core.version>
-
-        <power.springboot.bom.version>1.0</power.springboot.bom.version>
-
         <hutool.version>5.5.1</hutool.version>
     </properties>
 
@@ -41,11 +32,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
-        </dependency>
-        <!--监控-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <!--测试依赖-->
         <dependency>

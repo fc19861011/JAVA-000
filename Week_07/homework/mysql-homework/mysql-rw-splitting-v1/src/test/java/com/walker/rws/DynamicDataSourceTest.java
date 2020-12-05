@@ -15,17 +15,16 @@ import java.util.List;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DynamicDataSourceApp.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class DynamicDataSourceTest
-{
+public class DynamicDataSourceTest {
 
     @Autowired
     TestService service;
+
     /**
      * Rigorous Test :-)
      */
     @Test
-    public void saveData()
-    {
+    public void saveData() {
         TestEnity testEnity = new TestEnity();
 //        testEnity.setId(0);
         testEnity.setName("test");
@@ -35,6 +34,11 @@ public class DynamicDataSourceTest
     @Test
     public void queryData() {
         List<TestEnity> testEnities = service.queryTestEntitys();
-        System.out.println(testEnities.size());
+        testEnities.forEach(testEnity -> System.out.println(testEnity.getName())
+        );
+
+        testEnities = service.queryTestEntitys();
+        testEnities.forEach(testEnity -> System.out.println(testEnity.getName())
+        );
     }
 }

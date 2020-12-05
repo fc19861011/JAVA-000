@@ -1,51 +1,51 @@
 spring:
   shardingsphere:
     datasource:
-      names: master, slave01, slave02
+      names: master, slave1, slave2
       master:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://localhost:3306/shop?logger=Slf4JLogger&profileSQL=true
+        jdbc-url: jdbc:mysql://localhost:3306/shop?useUnicode=true&characterEncoding=utf8
         username: root
         password: root
-      slave01:
+      slave1:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://localhost:3307/shop?logger=Slf4JLogger&profileSQL=true
+        jdbc-url: jdbc:mysql://localhost:3307/shop?useUnicode=true&characterEncoding=utf8
         username: root
         password: root
-      slave02:
+      slave2:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://localhost:3308/shop?logger=Slf4JLogger&profileSQL=true
+        jdbc-url: jdbc:mysql://localhost:3308/shop?useUnicode=true&characterEncoding=utf8
         username: root
         password: root
-    rules:
-      replica-query:
-        data-sources:
-          pr-ds:
-            primary-data-source-name: master
-            replica-data-source-names: slave01, slave02
-            load-balancer-name: round_robin
-        load-balancers:
-          round-robin:
-            type: ROUND_ROBIN
+    masterslave:
+      name: ds0
+      master-data-source-name: master
+      slave-data-source-names:
+        - slave2
+        - slave1
+      load-balance-algorithm-type: round_robin
+    props:
+      sql:
+        show: true
 
 # Log Transactions Details
-logging:
-  level:
-    org:
-      springframework:
-        orm:
-          jpa: DEBUG
-        transaction: trace
-      hibernate:
-        engine:
-          transaction:
-            internal:
-              TransactionImpl: debug
-        resource:
-          jdbc: trace
-    com:
-      zaxxer:
-        hikari: DEBUG
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        orm:
+#          jpa: DEBUG
+#        transaction: trace
+#      hibernate:
+#        engine:
+#          transaction:
+#            internal:
+#              TransactionImpl: debug
+#        resource:
+#          jdbc: trace
+#    com:
+#      zaxxer:
+#        hikari: DEBUG

@@ -15,7 +15,7 @@
     <name>sharding-jdbc-example</name>
 
     <properties>
-        <shardingsphere.version>5.0.0-alpha</shardingsphere.version>
+        <shardingsphere.version>5.0.0-RC1-SNAPSHOT</shardingsphere.version>
     </properties>
 
     <dependencies>
@@ -26,15 +26,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>5.2.1.RELEASE</version>
-        </dependency>
-
-        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.19</version>
+            <version>5.1.47</version>
         </dependency>
 
         <dependency>
@@ -47,16 +41,18 @@
             <artifactId>spring-boot-starter-undertow</artifactId>
             <!--<scope>provided</scope>-->
         </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>18.0</version>
-        </dependency>
 
+        <!--<dependency>-->
+            <!--<groupId>org.apache.shardingsphere</groupId>-->
+            <!--<artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>-->
+            <!--<version>5.0.0-alpha</version>-->
+        <!--</dependency>-->
+
+        <!-- shardingsphere的jar包 -->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
-            <version>5.0.0-alpha</version>
+            <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+            <version>4.0.0-RC1</version>
         </dependency>
     </dependencies>
 
