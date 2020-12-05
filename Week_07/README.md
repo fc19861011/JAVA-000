@@ -512,11 +512,18 @@ public <S extends T> List<S> saveAll(Iterable<S> entities) {
 
 ### 多线程的方式：
 
-注意事项：springboot的注解事务在多线程中会失效
+CPU：4核，由于批量插入是IO密集型的操作，线程池大小推荐为8个
+
+每个线程处理125000，总计耗时：20695ms
+
+后面有时间再来继续调试、优化
 
 # 作业二 读写分离 - 动态切换数据源版本 1.0
 
-来不及了，就这两天补上
+## 实现思路：
+基于springboot的AbstractRoutingDataSource实现动态数据源的切换，结合AOP根据方法名动态注入响应的数据源
+## 作业目录:
+./homework/mysql-homework/mysql-rw-splitting-v1
 
 # 作业三 读写分离 - 数据库框架版本 2.0
 来不及了，就这两天补上
