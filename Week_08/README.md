@@ -1,1 +1,431 @@
-学习笔记
+## 使用shardingsphere-proxy进行水平拆分
+
+1、准备两个mysql
+
+2、初始化数据库
+
+```sql
+CREATE DATABASE `mail_test` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+```
+
+3、下载shardingsphere-proxy
+
+https://www.apache.org/dyn/closer.cgi/shardingsphere/5.0.0-alpha/apache-shardingsphere-5.0.0-alpha-shardingsphere-proxy-bin.tar.gz
+
+4、解压shardingsphere-proxy
+
+![1607437922976](.\img\shardingsphere-proxy.png)
+
+5、在根目录下新建ext-lib，并将mysql的驱动包复制到其中。
+
+6、配置proxy（注意配置文件中不要出现中文）
+
+- 进入config目录
+
+- 打开server.yaml文件，找到authentication节点，将users节点放开（用于连接proxy的用户名和密码）
+
+  ![1607438158881](.\img\proxy-users.png)
+
+- 配置分片规则（config/config-sharding.yaml）
+
+```yaml
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+######################################################################################################
+# 
+# Here you can configure the rules for the proxy.
+# This example is configuration of sharding rule.
+# 
+######################################################################################################
+#
+#schemaName: sharding_db
+#
+#dataSourceCommon:
+#  username: postgres
+#  password: postgres
+#  connectionTimeoutMilliseconds: 30000
+#  idleTimeoutMilliseconds: 60000
+#  maxLifetimeMilliseconds: 1800000
+#  maxPoolSize: 50
+#  minPoolSize: 1
+#  maintenanceIntervalMilliseconds: 30000
+#
+#dataSources:
+#  ds_0:
+#    url: jdbc:postgresql://127.0.0.1:5432/demo_ds_0?serverTimezone=UTC&useSSL=false
+#  ds_1:
+#    url: jdbc:postgresql://127.0.0.1:5432/demo_ds_1?serverTimezone=UTC&useSSL=false
+#
+#rules:
+#- !SHARDING
+#  tables:
+#    t_order:
+#      actualDataNodes: ds_${0..1}.t_order_${0..1}
+#      tableStrategy:
+#        standard:
+#          shardingColumn: order_id
+#          shardingAlgorithmName: t_order_inline
+#      keyGenerateStrategy:
+#        column: order_id
+#        keyGeneratorName: snowflake
+#    t_order_item:
+#      actualDataNodes: ds_${0..1}.t_order_item_${0..1}
+#      tableStrategy:
+#        standard:
+#          shardingColumn: order_id
+#          shardingAlgorithmName: t_order_item_inline
+#      keyGenerateStrategy:
+#        column: order_item_id
+#        keyGeneratorName: snowflake
+#  bindingTables:
+#    - t_order,t_order_item
+#  defaultDatabaseStrategy:
+#    standard:
+#      shardingColumn: user_id
+#      shardingAlgorithmName: database_inline
+#  defaultTableStrategy:
+#    none:
+#  
+#  shardingAlgorithms:
+#    database_inline:
+#      type: INLINE
+#      props:
+#        algorithm-expression: ds_${user_id % 2}
+#    t_order_inline:
+#      type: INLINE
+#      props:
+#        algorithm-expression: t_order_${order_id % 2}
+#    t_order_item_inline:
+#      type: INLINE
+#      props:
+#        algorithm-expression: t_order_item_${order_id % 2}
+#  
+#  keyGenerators:
+#    snowflake:
+#      type: SNOWFLAKE
+#      props:
+#        worker-id: 123
+
+######################################################################################################
+#
+# If you want to connect to MySQL, you should manually copy MySQL driver to lib directory.
+#
+######################################################################################################
+
+schemaName: sharding_db
+
+dataSourceCommon:
+  username: root
+  password: root 
+  connectionTimeoutMilliseconds: 30000
+  idleTimeoutMilliseconds: 60000
+  maxLifetimeMilliseconds: 1800000
+  maxPoolSize: 10
+  minPoolSize: 1
+  maintenanceIntervalMilliseconds: 30000
+
+dataSources:
+  ds_0:
+    url: jdbc:mysql://127.0.0.1:3306/mail_test?serverTimezone=UTC&useSSL=false
+  ds_1:
+    url: jdbc:mysql://127.0.0.1:3307/mail_test?serverTimezone=UTC&useSSL=false
+
+rules:
+- !SHARDING
+  tables:
+    order_info:
+      actualDataNodes: ds_${0..1}.order_info${0..15}
+      tableStrategy:
+        standard:
+          shardingColumn: order_id
+          shardingAlgorithmName: order_info_inline
+      keyGenerateStrategy:
+        column: order_id
+        keyGeneratorName: snowflake
+#    t_order_item:
+#      actualDataNodes: ds_${0..1}.t_order_item_${0..1}
+#      tableStrategy:
+#        standard:
+#          shardingColumn: order_id
+#          shardingAlgorithmName: t_order_item_inline
+#      keyGenerateStrategy:
+#        column: order_item_id
+#        keyGeneratorName: snowflake
+#  bindingTables:
+#    - t_order,t_order_item
+  defaultDatabaseStrategy:
+    standard:
+      shardingColumn: order_id
+      shardingAlgorithmName: database_inline
+  defaultTableStrategy:
+    none:
+
+  shardingAlgorithms:
+    database_inline:
+      type: INLINE
+      props:
+        algorithm-expression: ds_${order_id % 2}
+    order_info_inline:
+      type: INLINE
+      props:
+        algorithm-expression: order_info${order_id % 16}
+#        allow-range-query-with-inline-sharding: true
+
+#    t_order_item_inline:
+#      type: INLINE
+#      props:
+#        algorithm-expression: t_order_item_${order_id % 2}
+  
+  keyGenerators:
+    snowflake:
+      type: SNOWFLAKE
+      props:
+        worker-id: 123
+
+
+```
+
+- 启动proxy，默认端口3307，可以使用如下命令更改端口号：
+
+```powershell
+#在bin目录下运行
+.\start.bat 3317
+```
+
+- 测试批量插入100条
+
+  发现数据倾斜很严重，分布在db0.order_info0 以及db1.order_info1
+
+  经查阅[官方文档](https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-jdbc/configuration/built-in-algorithm/keygen/)发现可以给雪花算法增加属性：max-vibration-offset 来解决该问题
+
+  ![1607513906616](.\img\snowflake.png)
+
+  ```yaml
+    keyGenerators:
+      snowflake:
+        type: SNOWFLAKE
+        props:
+          worker-id: 123
+          max-vibration-offset: 15
+  ```
+
+  继续测试...
+
+  发现有数据表不可达
+
+  比如：db_0 中 偶数表有数据，奇数表没有数据
+
+  ​            db_1中 奇数表有数据，偶数表没有数据
+
+  库是偶数，单库数据表也是偶数，导致发生了以上的结果。
+
+  如果将数据库分库表达式先除15，然后在对其进行mod 2的操作，使得数据先填充db_0中的所有表，然后再填充db_1中的所有表，不断的重复，数据分布就比较均匀。
+
+  db表达式：
+
+  ```yaml
+  database_inline:
+        type: INLINE
+        props:
+         # algorithm-expression: ds_${ (Integer)(order_id / 15) % 2 } 这边要使用整除，否则计算结果可能会出现误差，正确写法请见下面
+          algorithm-expression: ds_${order_id.intdiv(15) % 2}
+  ```
+
+  测试结果，每个库每个表都有数据，较为均衡：
+
+  - db_0
+
+  ![1607568362848](.\img\db_0.png)
+
+  - db_1
+
+    ![1607568487871](.\img\db_1.png)
+
+  最终配置如下：
+
+  ```yaml
+  #
+  # Licensed to the Apache Software Foundation (ASF) under one or more
+  # contributor license agreements.  See the NOTICE file distributed with
+  # this work for additional information regarding copyright ownership.
+  # The ASF licenses this file to You under the Apache License, Version 2.0
+  # (the "License"); you may not use this file except in compliance with
+  # the License.  You may obtain a copy of the License at
+  #
+  #     http://www.apache.org/licenses/LICENSE-2.0
+  #
+  # Unless required by applicable law or agreed to in writing, software
+  # distributed under the License is distributed on an "AS IS" BASIS,
+  # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  # See the License for the specific language governing permissions and
+  # limitations under the License.
+  #
+  
+  ######################################################################################################
+  # 
+  # Here you can configure the rules for the proxy.
+  # This example is configuration of sharding rule.
+  # 
+  ######################################################################################################
+  #
+  #schemaName: sharding_db
+  #
+  #dataSourceCommon:
+  #  username: postgres
+  #  password: postgres
+  #  connectionTimeoutMilliseconds: 30000
+  #  idleTimeoutMilliseconds: 60000
+  #  maxLifetimeMilliseconds: 1800000
+  #  maxPoolSize: 50
+  #  minPoolSize: 1
+  #  maintenanceIntervalMilliseconds: 30000
+  #
+  #dataSources:
+  #  ds_0:
+  #    url: jdbc:postgresql://127.0.0.1:5432/demo_ds_0?serverTimezone=UTC&useSSL=false
+  #  ds_1:
+  #    url: jdbc:postgresql://127.0.0.1:5432/demo_ds_1?serverTimezone=UTC&useSSL=false
+  #
+  #rules:
+  #- !SHARDING
+  #  tables:
+  #    t_order:
+  #      actualDataNodes: ds_${0..1}.t_order_${0..1}
+  #      tableStrategy:
+  #        standard:
+  #          shardingColumn: order_id
+  #          shardingAlgorithmName: t_order_inline
+  #      keyGenerateStrategy:
+  #        column: order_id
+  #        keyGeneratorName: snowflake
+  #    t_order_item:
+  #      actualDataNodes: ds_${0..1}.t_order_item_${0..1}
+  #      tableStrategy:
+  #        standard:
+  #          shardingColumn: order_id
+  #          shardingAlgorithmName: t_order_item_inline
+  #      keyGenerateStrategy:
+  #        column: order_item_id
+  #        keyGeneratorName: snowflake
+  #  bindingTables:
+  #    - t_order,t_order_item
+  #  defaultDatabaseStrategy:
+  #    standard:
+  #      shardingColumn: user_id
+  #      shardingAlgorithmName: database_inline
+  #  defaultTableStrategy:
+  #    none:
+  #  
+  #  shardingAlgorithms:
+  #    database_inline:
+  #      type: INLINE
+  #      props:
+  #        algorithm-expression: ds_${user_id % 2}
+  #    t_order_inline:
+  #      type: INLINE
+  #      props:
+  #        algorithm-expression: t_order_${order_id % 2}
+  #    t_order_item_inline:
+  #      type: INLINE
+  #      props:
+  #        algorithm-expression: t_order_item_${order_id % 2}
+  #  
+  #  keyGenerators:
+  #    snowflake:
+  #      type: SNOWFLAKE
+  #      props:
+  #        worker-id: 123
+  
+  ######################################################################################################
+  #
+  # If you want to connect to MySQL, you should manually copy MySQL driver to lib directory.
+  #
+  ######################################################################################################
+  
+  schemaName: sharding_db
+  
+  dataSourceCommon:
+    username: root
+    password: root 
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 10
+    minPoolSize: 1
+    maintenanceIntervalMilliseconds: 30000
+  
+  dataSources:
+    ds_0:
+      url: jdbc:mysql://127.0.0.1:3306/mail_test?serverTimezone=UTC&useSSL=false
+    ds_1:
+      url: jdbc:mysql://127.0.0.1:3307/mail_test?serverTimezone=UTC&useSSL=false
+  
+  rules:
+  - !SHARDING
+    tables:
+      order_info:
+        actualDataNodes: ds_${0..1}.order_info${0..15}
+        tableStrategy:
+          standard:
+            shardingColumn: order_id
+            shardingAlgorithmName: order_info_inline
+        keyGenerateStrategy:
+          column: order_id
+          keyGeneratorName: snowflake
+  #    t_order_item:
+  #      actualDataNodes: ds_${0..1}.t_order_item_${0..1}
+  #      tableStrategy:
+  #        standard:
+  #          shardingColumn: order_id
+  #          shardingAlgorithmName: t_order_item_inline
+  #      keyGenerateStrategy:
+  #        column: order_item_id
+  #        keyGeneratorName: snowflake
+  #  bindingTables:
+  #    - t_order,t_order_item
+    defaultDatabaseStrategy:
+      standard:
+        shardingColumn: order_id
+        shardingAlgorithmName: database_inline
+    defaultTableStrategy:
+      none:
+  
+    shardingAlgorithms:
+      database_inline:
+        type: INLINE
+        props:
+          algorithm-expression: ds_${order_id.intdiv(15) % 2}
+      order_info_inline:
+        type: INLINE
+        props:
+          algorithm-expression: order_info${order_id % 16}
+  #        allow-range-query-with-inline-sharding: true
+  
+  #    t_order_item_inline:
+  #      type: INLINE
+  #      props:
+  #        algorithm-expression: t_order_item_${order_id % 2}
+    
+    keyGenerators:
+      snowflake:
+        type: SNOWFLAKE
+        props:
+          worker-id: 123
+          max-vibration-offset: 15
+  
+  ```

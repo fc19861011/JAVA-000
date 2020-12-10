@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.walker.homework</groupId>
-        <artifactId>week08-homework</artifactId>
+        <artifactId>distributed-transaction</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>sharding-jdbc</artifactId>
+    <artifactId>service-account</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <name>${project.artifactId}</name>
