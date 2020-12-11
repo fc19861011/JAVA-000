@@ -1,8 +1,8 @@
-package com.walker.sharding.proxy;
+package com.walker.sharding.jdbc;
 
 import cn.hutool.core.date.DateTime;
-import com.walker.sharding.proxy.domain.OrderInfoEntity;
-import com.walker.sharding.proxy.repository.OrderInfoRepository;
+import com.walker.sharding.jdbc.domain.OrderInfoEntity;
+import com.walker.sharding.jdbc.repository.OrderInfoRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ShardingProxyExampleApp.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ProxyTest {
+@SpringBootTest(classes = ShardingJdbcExampleApp.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class JdbcTest {
 
     @Autowired
     OrderInfoRepository orderInfoRepository;

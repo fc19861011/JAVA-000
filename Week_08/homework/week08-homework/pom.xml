@@ -12,7 +12,8 @@
 
     <modules>
         <module>sharding-proxy</module>
-        <module>sharding-jdbc</module>
+        <module>sharding-jdbc4</module>
+        <module>sharding-jdbc5</module>
     </modules>
 
     <properties>
@@ -20,7 +21,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+        <spring-boot.version>2.2.12.RELEASE</spring-boot.version>
         <spring.checkstyle.version>0.0.22</spring.checkstyle.version>
         <git.commit.version>2.2.5</git.commit.version>
         <hutool.version>5.5.1</hutool.version>

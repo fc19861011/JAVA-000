@@ -1,8 +1,8 @@
-package com.walker.sharding.jdbc;
+package com.walker.jdbc5;
 
 import cn.hutool.core.date.DateTime;
-import com.walker.sharding.jdbc.domain.OrderInfoEntity;
-import com.walker.sharding.jdbc.repository.OrderInfoRepository;
+import com.walker.jdbc5.model.OrderInfoEntity;
+import com.walker.jdbc5.repository.OrderInfoRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ShardingJdbcExampleApp.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class JdbcTest {
+@SpringBootTest(classes = ShardingJdbc5ExampleApp.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class Jdbc5Test {
 
     @Autowired
     OrderInfoRepository orderInfoRepository;
