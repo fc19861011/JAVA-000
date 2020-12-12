@@ -21,7 +21,7 @@ public class Jdbc5Test {
      */
     @Test
     public void save() {
-        int order_count = 5000;
+        int order_count = 10;
         for (int i = 0; i < order_count; i++) {
             OrderInfoEntity orderInfoEntity = new OrderInfoEntity();
             orderInfoEntity.setOrderCode("123123123"+i);

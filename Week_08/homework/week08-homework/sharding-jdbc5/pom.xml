@@ -29,12 +29,6 @@
             <version>5.1.47</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>18.0</version>
-        </dependency>
-
         <!-- shardingsphere的jar包 -->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
