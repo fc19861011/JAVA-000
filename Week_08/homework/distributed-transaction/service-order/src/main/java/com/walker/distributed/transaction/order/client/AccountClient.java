@@ -15,7 +15,7 @@ public interface AccountClient {
      * @param accountDO 实体类
      * @return true 成功
      */
-    @RequestMapping("/account-service/account/payment")
+    @RequestMapping("/account/payment")
     @Hmily
     Boolean payment(@RequestBody AccountDTO accountDO);
 }

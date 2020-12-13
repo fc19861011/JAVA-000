@@ -25,7 +25,7 @@ public class PaymentServiceImpl implements PaymentService {
     public boolean makePayment(OrderInfoEntity orderInfoEntity) {
         updateOrderStatus(orderInfoEntity, OrderInfoStatusEnum.PAYING);
         accountClient.payment(buildAccountDTO(orderInfoEntity));
-        return false;
+        return true;
     }
 
 

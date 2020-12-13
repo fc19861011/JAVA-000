@@ -13,7 +13,7 @@ import java.util.Date;
  * @author fc walker
  * @date 2020/12/2 18:00
  **/
-@Entity(name = "order_info")
+@Entity(name = "account")
 @Data
 public class AccountInfoEntity {
     @Id

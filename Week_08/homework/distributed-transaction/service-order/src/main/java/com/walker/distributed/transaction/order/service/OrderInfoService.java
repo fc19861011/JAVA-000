@@ -8,4 +8,5 @@ import java.math.BigDecimal;
 public interface OrderInfoService {
 
     OrderInfoEntity saveOrderInfo(Integer count, BigDecimal amount);
+    String orderPay(Integer count, BigDecimal amount);
 }

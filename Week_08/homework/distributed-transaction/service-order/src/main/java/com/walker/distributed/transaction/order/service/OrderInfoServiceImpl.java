@@ -25,6 +25,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
         return order;
     }
 
+    @Override
     public String orderPay(Integer count, BigDecimal amount) {
         OrderInfoEntity order = saveOrderInfo(count, amount);
         long start = System.currentTimeMillis();

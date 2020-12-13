@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @FeignClient(value = "stock-service")
 public interface StockClient {
-    @RequestMapping("/stock-service/stock/decrease")
+    @RequestMapping("/stock/decrease")
     @Hmily
     Boolean decrease(@RequestBody InventoryDTO inventoryDTO);
 }

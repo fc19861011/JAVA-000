@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     # 加上 &logger=Slf4JLogger&profileSQL=true，用来显示 MySQL 执行的 SQL 日志
     # url: jdbc:mysql://192.168.0.119:3306/mail_test?useUnicode=true&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true
-    url: jdbc:mysql://127.0.0.1:3306/xa_test?useUnicode=true&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true&logger=Slf4JLogger&profileSQL=true
+    url: jdbc:mysql://127.0.0.1:3306/xa_test?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
     hikari:
