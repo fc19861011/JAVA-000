@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: account-service
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    # 加上 &logger=Slf4JLogger&profileSQL=true，用来显示 MySQL 执行的 SQL 日志
+    # url: jdbc:mysql://192.168.0.119:3306/mail_test?useUnicode=true&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true
+    url: jdbc:mysql://127.0.0.1:3307/xa_test?useUnicode=true&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true&logger=Slf4JLogger&profileSQL=true
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 10
+      # 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: false
+      # 连接池名称
+      pool-name: MyHikariCP
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+# Log Transactions Details
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        orm:
+#          jpa: DEBUG
+#        transaction: trace
+#      hibernate:
+#        engine:
+#          transaction:
+#            internal:
+#              TransactionImpl: debug
+#        resource:
+#          jdbc: trace
+#    com:
+#      zaxxer:
+#        hikari: DEBUG
+Server:
+  port: 8907
+
+eureka:
+ client:
+     serviceUrl:
+       defaultZone: http://localhost:8900/eureka/
+ instance:
+   prefer-ip-address: true
+
+#Ribbon的负载均衡策略
+ribbon:
+    NFLoadBalancerRuleClassName:  com.netflix.loadbalancer.RandomRule
+    MaxAutoRetriesNextServer : 0
+    MaxAutoRetries: 0
+    ReadTimeout: 10000
+feign:
+  hystrix:
+     enabled : false

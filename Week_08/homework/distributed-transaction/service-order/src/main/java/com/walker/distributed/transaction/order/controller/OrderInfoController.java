@@ -1,8 +1,8 @@
-package com.walker.distributed.transaction.account.controller;
+package com.walker.distributed.transaction.order.controller;
 
-import com.walker.distributed.transaction.account.domain.OrderInfoEntity;
-import com.walker.distributed.transaction.account.reponsitory.OrderInfoRepository;
-import com.walker.distributed.transaction.account.util.RWapper;
+import com.walker.distributed.transaction.order.domain.OrderInfoEntity;
+import com.walker.distributed.transaction.order.repository.OrderInfoRepository;
+import com.walker.distributed.transaction.order.util.RWapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

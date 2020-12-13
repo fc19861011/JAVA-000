@@ -11,9 +11,11 @@
     <name>${project.artifactId}</name>
 
     <modules>
+        <module>service-eureka</module>
         <module>service-account</module>
         <module>service-order</module>
         <module>service-stock</module>
+        <module>service-common</module>
     </modules>
 
     <properties>
@@ -22,12 +24,20 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR2</spring-cloud.version>
         <spring.checkstyle.version>0.0.22</spring.checkstyle.version>
         <git.commit.version>2.2.5</git.commit.version>
         <hutool.version>5.5.1</hutool.version>
     </properties>
 
     <dependencies>
+
+        <!--aop支持-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
         <!--配置文件处理器-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -74,12 +84,6 @@
             <!--<scope>provided</scope>-->
         </dependency>
 
-        <dependency>
-            <groupId>org.dromara</groupId>
-            <artifactId>hmily-spring-boot-starter-springcloud</artifactId>
-            <version>2.1.0</version>
-        </dependency>
-
     </dependencies>
 
     <dependencyManagement>
@@ -89,6 +93,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

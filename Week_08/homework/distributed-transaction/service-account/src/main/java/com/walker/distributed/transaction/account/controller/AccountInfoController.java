@@ -1,0 +1,21 @@
+package com.walker.distributed.transaction.account.controller;
+
+import com.walker.distributed.transaction.account.service.AccountInfoService;
+import com.walker.tx.common.dto.AccountDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value="/account")
+public class AccountInfoController {
+
+    @Autowired
+    AccountInfoService service;
+
+    @PostMapping("/orderPay")
+    public boolean orderPay(AccountDTO accountDTO) {
+        return service.payment(accountDTO);
+    }
+}

@@ -1,6 +1,6 @@
-package com.walker.distributed.transaction.account.reponsitory;
+package com.walker.distributed.transaction.order.repository;
 
-import com.walker.distributed.transaction.account.domain.OrderInfoEntity;
+import com.walker.distributed.transaction.order.domain.OrderInfoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
