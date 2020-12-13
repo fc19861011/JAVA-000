@@ -71,10 +71,10 @@ repository:
     blockWhenExhausted: true
     timeOut: 1000
 
-metrics:
-  metricsName: prometheus
-  host:
-  port: 9071
-  async: true
-  threadCount : 16
-  jmxConfig:
+#metrics:
+#  metricsName: prometheus
+#  host:
+#  port: 9071
+#  async: true
+#  threadCount : 16
+#  jmxConfig:
