@@ -8,8 +8,6 @@ import org.dromara.hmily.annotation.HmilyTCC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-
 @Service
 @Slf4j
 public class AccountInfoServiceImpl implements AccountInfoService {
@@ -27,16 +25,18 @@ public class AccountInfoServiceImpl implements AccountInfoService {
     @HmilyTCC(confirmMethod = "confirm", cancelMethod = "cancel")
     public boolean payment(AccountDTO accountDTO) {
         AccountInfoEntity entity = repository.findAccountByUserId(accountDTO.getUserId());
-        entity.setFreezeAmount(accountDTO.getAmount());
+        entity.setFreezeAmount(entity.getFreezeAmount().add(accountDTO.getAmount()));
         entity.setBalance(entity.getBalance().subtract(accountDTO.getAmount()));
         repository.save(entity);
-        return true;
+        throw new RuntimeException("模拟付款失败");
+//        return true;
     }
 
+    // 注意幂等
     public boolean confirm(final AccountDTO accountDTO) {
         log.info("============执行confirm 付款接口===============");
         AccountInfoEntity entity = repository.findAccountByUserId(accountDTO.getUserId());
-        entity.setFreezeAmount(BigDecimal.ZERO);
+        entity.setFreezeAmount(entity.getFreezeAmount().subtract(accountDTO.getAmount()));
         repository.save(entity);
         return true;
     }
@@ -44,7 +44,7 @@ public class AccountInfoServiceImpl implements AccountInfoService {
 
     /**
      * Cancel boolean.
-     *
+     * 注意幂等
      * @param accountDTO the account dto
      * @return the boolean
      */
@@ -52,7 +52,7 @@ public class AccountInfoServiceImpl implements AccountInfoService {
         log.info("============执行cancel 付款接口===============");
         AccountInfoEntity entity = repository.findAccountByUserId(accountDTO.getUserId());
         entity.setBalance(entity.getBalance().add(accountDTO.getAmount()));
-        entity.setFreezeAmount(BigDecimal.ZERO);
+        entity.setFreezeAmount(entity.getFreezeAmount().subtract(accountDTO.getAmount()));
         repository.save(entity);
         return true;
     }

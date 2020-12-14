@@ -19,7 +19,7 @@ public class StockServiceImpl implements StockService {
     @HmilyTCC(confirmMethod = "confirm", cancelMethod = "cancel")
     public boolean decrease(InventoryDTO inventoryDTO) {
         StockEntitiy stockEntitiy = stockRepository.getByProductId(inventoryDTO.getProductId());
-        stockEntitiy.setLockInventory(inventoryDTO.getCount());
+        stockEntitiy.setLockInventory(stockEntitiy.getLockInventory() + inventoryDTO.getCount());
         stockEntitiy.setTotalInventory(stockEntitiy.getTotalInventory() - inventoryDTO.getCount());
         stockRepository.save(stockEntitiy);
         return true;
@@ -28,7 +28,7 @@ public class StockServiceImpl implements StockService {
     public boolean confirm(final InventoryDTO inventoryDTO) {
         log.info("============执行confirm 减库存接口===============");
         StockEntitiy stockEntitiy = stockRepository.getByProductId(inventoryDTO.getProductId());
-        stockEntitiy.setLockInventory(0);
+        stockEntitiy.setLockInventory(stockEntitiy.getLockInventory() - inventoryDTO.getCount());
         stockRepository.save(stockEntitiy);
         return true;
     }
@@ -36,7 +36,7 @@ public class StockServiceImpl implements StockService {
     public boolean cancel(final InventoryDTO inventoryDTO) {
         log.info("============cancel 减库存接口===============");
         StockEntitiy stockEntitiy = stockRepository.getByProductId(inventoryDTO.getProductId());
-        stockEntitiy.setLockInventory(0);
+        stockEntitiy.setLockInventory(stockEntitiy.getLockInventory() - inventoryDTO.getCount());
         stockEntitiy.setTotalInventory(stockEntitiy.getTotalInventory() + inventoryDTO.getCount());
         stockRepository.save(stockEntitiy);
         return true;
