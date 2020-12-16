@@ -8,8 +8,8 @@ package com.walker.core.proxy.server;
 public interface RpcServerResolver {
     /**
      * 反射生成实现类
-     * @param serviceClassName
-     * @return
+     * @param serviceClassName 调用类名
+     * @return Object
      */
     Object resolve(String serviceClassName);
 }

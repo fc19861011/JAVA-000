@@ -2,6 +2,7 @@ package com.walker.rpc.provider;
 
 import com.walker.core.proxy.server.RpcServerInvoker;
 import com.walker.rpc.provider.resolver.RpcResole;
+import com.walker.rpc.provider.resolver.RpcResoleByClass;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -18,13 +19,23 @@ public class ProviderApp {
         SpringApplication.run(ProviderApp.class);
     }
 
-    @Bean
+    @Bean(name = "invokerByReflex")
     public RpcServerInvoker serverInvoker() {
         return new RpcServerInvoker(resole());
+    }
+
+    @Bean(name = "invokerByServiceCls")
+    public RpcServerInvoker serverInvokerByCls() {
+        return new RpcServerInvoker(resoleByCls());
     }
 
     @Bean
     public RpcResole resole() {
         return  new RpcResole();
+    }
+
+    @Bean
+    public RpcResoleByClass resoleByCls() {
+        return  new RpcResoleByClass();
     }
 }

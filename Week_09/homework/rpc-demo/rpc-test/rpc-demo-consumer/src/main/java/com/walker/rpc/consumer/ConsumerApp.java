@@ -14,12 +14,13 @@ import java.util.List;
 //@EntityScan("com.walker.rpc.common")
 public class ConsumerApp {
     public static void main(String[] args) {
-        UserService userService = RpcClientProxy.create(UserService.class, "http://127.0.0.1:8989/");
+        UserService userService = RpcClientProxy.create(UserService.class, "http://127.0.0.1:8989/cls");
+        UserService userService2 = RpcClientProxy.create(UserService.class, "http://127.0.0.1:8989");
         List<UserEntity> users = userService.findAll();
         users.stream().forEach(user -> System.out.println(user.getId() + ":" + user.getName()));
 
         UserEntity userEntity = new UserEntity();
         userEntity.setName("张三");
-        userService.save(userEntity);
+        userService2.save(userEntity);
     }
 }
