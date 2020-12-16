@@ -22,4 +22,10 @@ insert into user_info values(null, 'u02');
 - [ ] 使用aop 或者 字节码实现客户端的代理
 - [ ] 尝试使用 Netty+HTTP 作为 client 端传输方式。
 
+```
+// 根据提供服务的Class类型实例化对象
+UserService userService = RpcClientProxy.create(UserService.class, "http://127.0.0.1:8989/cls");
+// 根据反射实例化对象
+UserService userService2 = RpcClientProxy.create(UserService.class, "http://127.0.0.1:8989");
+```
 # 作业二
