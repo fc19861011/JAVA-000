@@ -35,3 +35,44 @@ UserService userService2 = RpcClientProxy.create(UserService.class, "http://127.
 3. 通过实现ApplicationRunner接口，在springboot容器启动完成后动态将@RpcReference注解标注的对象进行实例化
 
 # 作业二
+> 结合 dubbo+hmily，实现一个 TCC 外汇交易处理，代码提交到 GitHub:   
+> 用户 A 的美元账户和人民币账户都在 A 库，使用 1 美元兑换 7 人民币 ;   
+> 用户 B 的美元账户和人民币账户都在 B 库，使用 7 人民币兑换 1 美元 ;   
+> 设计账户表，冻结资产表，实现上述两个本地事务的分布式事务。
+- 数据库语句
+```sql
+-- A库
+create database foreign_exchange;
+use foreign_exchange;
+create table rmb_account(
+  user_id int not null AUTO_INCREMENT,
+  amount int not null,
+  PRIMARY KEY (`user_id`) USING BTREE
+);
+
+create table usd_account(
+  user_id int not null AUTO_INCREMENT,
+  amount int not null,
+  PRIMARY KEY (`user_id`) USING BTREE
+);
+insert into rmb_account values (1,0);
+insert into usd_account values (1,5);
+
+create table rmb_account_freeze (
+  user_id int not null,
+  amount int not null,
+  PRIMARY KEY (`user_id`) USING BTREE
+);
+
+create table usd_account_freeze (
+  user_id int not null,
+  amount int not null,
+  PRIMARY KEY (`user_id`) USING BTREE
+);
+
+-- B库 表结构和A库一致
+insert into rmb_account values (2,100);
+insert into usd_account values (2,0);
+
+```
+
