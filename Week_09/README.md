@@ -75,4 +75,6 @@ insert into rmb_account values (2,100);
 insert into usd_account values (2,0);
 
 ```
+表结构不太合理，正在调试中
+预计周六下午搞定
 
