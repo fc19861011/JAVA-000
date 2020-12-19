@@ -8,8 +8,9 @@ public interface UsdAccountFreezeService {
 
     /**
      * 冻结用户的美元
-     * @param userid 冻结用户
-     * @param count  冻结数量
+     * @param userId 冻结用户
+     * @param amount  冻结数量
+     * @return boolean
      */
-    void freezeUsdAccount(Integer userid, Integer count);
+    boolean freezeUsdAccount(Integer userId, Integer amount);
 }

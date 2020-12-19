@@ -7,9 +7,18 @@ package com.walker.transaction.usd;
 public interface UsdAccountService {
 
     /**
-     * 人民币兑换
+     * 美元支付
      * @param payerId 付款方
-     * @param payeeId 收款方
+     * @param amount   金额
+     * @throws Exception s
      */
-    void usdTransaction(Integer payerId, Integer payeeId);
+    boolean usdPayment(Integer payerId, Integer amount) throws Exception;
+
+    /**
+     * 美元收款
+     * @param payerId
+     * @param amount
+     * @throws Exception
+     */
+    boolean usdCollection(Integer payerId, Integer amount) throws Exception;
 }

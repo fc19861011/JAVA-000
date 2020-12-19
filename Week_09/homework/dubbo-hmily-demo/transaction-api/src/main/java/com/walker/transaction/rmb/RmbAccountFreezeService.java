@@ -8,8 +8,9 @@ public interface RmbAccountFreezeService {
 
     /**
      * 冻结人民币
-     * @param userid 冻结用户
-     * @param count  冻结数量
+     * @param userId 冻结用户
+     * @param amount  冻结数量
+     * @return boolean
      */
-    void freezeRmbAccount(Integer userid, Integer count);
+    boolean freezeRmbAccount(Integer userId, Integer amount);
 }
