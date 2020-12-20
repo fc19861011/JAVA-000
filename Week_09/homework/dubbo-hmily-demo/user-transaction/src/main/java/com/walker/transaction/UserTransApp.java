@@ -16,6 +16,6 @@ public class UserTransApp
 {
     public static void main( String[] args )
     {
-        SpringApplication.run(UserTransApp.class);
+        SpringApplication.run(UserTransApp.class, args);
     }
 }

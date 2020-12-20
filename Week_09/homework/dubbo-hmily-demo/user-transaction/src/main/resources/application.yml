@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     # 加上 &logger=Slf4JLogger&profileSQL=true，用来显示 MySQL 执行的 SQL 日志
     # url: jdbc:mysql://192.168.0.119:3306/mail_test?useUnicode=true&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true
-    url: jdbc:mysql://127.0.0.1:3306/foreign_exchange?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3317/foreign_exchange?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
     hikari:
@@ -30,9 +30,11 @@ spring:
 dubbo:
   scan:
     base-packages: com.walker.transaction.rmb
+  protocol:
+    host: 127.0.0.1
   registry:
     address: zookeeper://127.0.0.1:2181
+    timeout: 10000
   metadata-report:
     address: zookeeper://127.0.0.1:2181
-  config-center:
-    timeout: 30000
+

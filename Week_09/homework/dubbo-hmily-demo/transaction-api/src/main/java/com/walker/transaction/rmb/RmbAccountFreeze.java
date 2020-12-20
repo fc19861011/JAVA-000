@@ -10,10 +10,9 @@ import javax.persistence.*;
  **/
 @Data
 @Entity
-@Table(name = "rmb_account_freeze")
+@Table(name = "freeze_rmb_account")
 public class RmbAccountFreeze {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
     private Integer amount;
     private Integer freezeType;

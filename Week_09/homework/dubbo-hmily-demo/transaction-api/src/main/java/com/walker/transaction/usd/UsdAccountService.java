@@ -21,4 +21,6 @@ public interface UsdAccountService {
      * @throws Exception
      */
     boolean usdCollection(Integer payerId, Integer amount) throws Exception;
+
+    boolean usdTrade(Integer payerId, Integer payeeId, Integer usdCount) throws Exception;
 }

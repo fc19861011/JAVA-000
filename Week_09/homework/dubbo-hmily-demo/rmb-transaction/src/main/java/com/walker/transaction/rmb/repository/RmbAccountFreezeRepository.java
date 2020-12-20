@@ -13,6 +13,8 @@ import org.springframework.stereotype.Repository;
  **/
 @Repository
 public interface RmbAccountFreezeRepository extends JpaRepository<RmbAccountFreeze, Integer> {
+
+    RmbAccountFreeze findByUserIdAndFreezeType(Integer userId, Integer freezeType);
     /**
      * 款项冻结
      * @param payerId

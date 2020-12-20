@@ -11,6 +11,9 @@ import org.springframework.data.repository.query.Param;
  * @date 2020/12/19 10:38
  **/
 public interface UsdAccountFreezeRepository extends JpaRepository<UsdAccountFreeze, Integer> {
+
+    UsdAccountFreeze findByUserIdAndFreezeType(Integer userId, Integer freezeType);
+
     /**
      * 款项冻结
      * @param payerId

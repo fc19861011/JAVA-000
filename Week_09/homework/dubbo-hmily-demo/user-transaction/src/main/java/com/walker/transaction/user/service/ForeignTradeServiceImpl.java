@@ -21,7 +21,6 @@ public class ForeignTradeServiceImpl implements ForeignTradeService {
     private UsdAccountService usdAccountService;
 
     @Override
-    @HmilyTCC
     public boolean usdTrade(Integer payerId, Integer payeeId, Integer usdCount)  throws Exception {
         // 兑换人支付美元
         usdAccountService.usdPayment(payerId, usdCount);

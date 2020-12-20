@@ -8,14 +8,16 @@ import com.walker.transaction.rmb.repository.RmbAccountRepository;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.dromara.hmily.annotation.HmilyTCC;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author fcwalker
  * @date 2020/12/18 17:28
  **/
-@Transactional(rollbackFor = Exception.class)
 @DubboService(version = "1.0.0")
+@Service
+@Transactional(rollbackFor = Exception.class)
 public class RmbAccountServiceImpl implements RmbAccountService {
 
     @Autowired
@@ -32,7 +34,7 @@ public class RmbAccountServiceImpl implements RmbAccountService {
         if (amount < count) {
             throw new Exception("余额不足");
         }
-        RmbAccountFreeze accountFreeze = rmbAccountFreezeRepository.getOne(payerId);
+        RmbAccountFreeze accountFreeze = rmbAccountFreezeRepository.findByUserIdAndFreezeType(payerId, 1);
         int freezeCount = 0;
         if (null == accountFreeze) {
             accountFreeze = new RmbAccountFreeze();
@@ -52,10 +54,12 @@ public class RmbAccountServiceImpl implements RmbAccountService {
     }
 
     public void confirmRmbPayment(Integer payerId, Integer count) {
+        System.out.println("支付成功");
         rmbAccountFreezeRepository.accountFinish(payerId, count, 1);
     }
 
     public void cancelRmbPayment(Integer payerId, Integer count) {
+        System.out.println("支付cancel");
         rmbAccountRepository.paymentCancel(payerId, count);
         rmbAccountFreezeRepository.accountFinish(payerId, count, 1);
     }
@@ -63,7 +67,7 @@ public class RmbAccountServiceImpl implements RmbAccountService {
     @Override
     @HmilyTCC(confirmMethod = "confirmRmbCollection", cancelMethod = "cancelRmbCollection")
     public boolean rmbCollection(Integer payerId, Integer count) throws Exception {
-        RmbAccountFreeze accountFreeze = rmbAccountFreezeRepository.getOne(payerId);
+        RmbAccountFreeze accountFreeze = rmbAccountFreezeRepository.findByUserIdAndFreezeType(payerId, 2);
         int freezeCount = 0;
         if (null == accountFreeze) {
             accountFreeze = new RmbAccountFreeze();
@@ -82,11 +86,13 @@ public class RmbAccountServiceImpl implements RmbAccountService {
     }
 
     public void confirmRmbCollection(Integer payerId, Integer count) {
+        System.out.println("收款成功");
         rmbAccountRepository.collection(payerId, count);
         rmbAccountFreezeRepository.accountFinish(payerId, count, 2);
     }
 
     public void cancelRmbCollection(Integer payerId, Integer count) {
+        System.out.println("收款cancel");
         rmbAccountFreezeRepository.accountFinish(payerId, count, 2);
     }
 }
