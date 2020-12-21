@@ -1,5 +1,7 @@
 package com.walker.transaction.rmb;
 
+import org.dromara.hmily.annotation.Hmily;
+
 /**
  * @author fcwalker
  * @date 2020/12/18 17:15
@@ -12,6 +14,7 @@ public interface RmbAccountService {
      * @param amount   金额
      * @throws Exception
      */
+    @Hmily
     boolean rmbPayment(Integer payerId, Integer amount) throws Exception;
 
     /**
@@ -20,5 +23,6 @@ public interface RmbAccountService {
      * @param amount
      * @throws Exception
      */
+    @Hmily
     boolean rmbCollection(Integer payerId, Integer amount) throws Exception;
 }

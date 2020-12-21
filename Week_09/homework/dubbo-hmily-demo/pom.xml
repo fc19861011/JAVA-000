@@ -1,184 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.walker.transaction</groupId>
-    <artifactId>transaction-demo</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>rmb-transaction</module>
-        <module>usd-transaction</module>
-        <module>transaction-api</module>
-        <module>user-transaction</module>
-    </modules>
-    <packaging>pom</packaging>
-    <name>${project.artifactId}</name>
-
-    <description>
-        使用dubbo、hmily模拟外汇交易场景
-    </description>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.SR2</spring-cloud.version>
-        <spring.checkstyle.version>0.0.22</spring.checkstyle.version>
-        <git.commit.version>2.2.5</git.commit.version>
-        <hutool.version>5.5.1</hutool.version>
-        <dubbo.version>2.7.7</dubbo.version>
-        <hmily.version>2.1.1</hmily.version>
-    </properties>
-
-    <dependencies>
-
-        <!--aop支持-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-
-        <!--配置文件处理器-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <!--测试依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!--Lombok-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.10</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.walker.transaction</groupId>
-            <artifactId>transaction-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring-boot.version}</version>
-            <exclusions>
-                <!--排除tomcat依赖 -->
-                <exclusion>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                    <groupId>org.springframework.boot</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-            <!--<scope>provided</scope>-->
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.47</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>${dubbo.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.dromara</groupId>
-            <artifactId>hmily-annotation</artifactId>
-            <version>${hmily.version}</version>
-        </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>org.dromara</groupId>-->
-<!--            <artifactId>hmily-core</artifactId>-->
-<!--            <version>${hmily.version}</version>-->
-<!--        </dependency>-->
-
-        <dependency>
-            <groupId>org.dromara</groupId>
-            <artifactId>hmily-dubbo</artifactId>
-            <version>${hmily.version}</version>
-        </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>org.apache.curator</groupId>-->
-<!--            <artifactId>curator-client</artifactId>-->
-<!--            <version>${curator.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.curator</groupId>-->
-<!--            <artifactId>curator-framework</artifactId>-->
-<!--            <version>${curator.version}</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.apache.zookeeper</groupId>-->
-<!--            <artifactId>zookeeper</artifactId>-->
-<!--            <version>${zookeeper.version}</version>-->
-<!--        </dependency>-->
-
-<!--         Zookeeper dependencies-->
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-dependencies-zookeeper</artifactId>
-            <version>${dubbo.version}</version>
-            <type>pom</type>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-    </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <!--spring boot 公共版本定义-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-<!--            <dependency>-->
-<!--                <groupId>org.apache.dubbo</groupId>-->
-<!--                <artifactId>dubbo-dependencies-bom</artifactId>-->
-<!--                <version>${dubbo.version}</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
-
-        </dependencies>
-    </dependencyManagement>
-
-    <build>
-    </build>
-</project>
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">    <modelVersion>4.0.0</modelVersion>    <groupId>com.walker.transaction</groupId>    <artifactId>transaction-demo</artifactId>    <version>1.0-SNAPSHOT</version>    <modules>        <module>rmb-transaction</module>        <module>usd-transaction</module>        <module>transaction-api</module>        <module>user-transaction</module>    </modules>    <packaging>pom</packaging>    <name>${project.artifactId}</name>    <description>        使用dubbo、hmily模拟外汇交易场景    </description>    <properties>        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>        <maven.compiler.source>1.8</maven.compiler.source>        <maven.compiler.target>1.8</maven.compiler.target>        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>        <spring-cloud.version>Hoxton.SR2</spring-cloud.version>        <spring.checkstyle.version>0.0.22</spring.checkstyle.version>        <git.commit.version>2.2.5</git.commit.version>        <hutool.version>5.5.1</hutool.version>        <dubbo.version>2.7.7</dubbo.version>        <hmily.version>2.1.1</hmily.version>    </properties>    <dependencies>        <!--aop支持-->        <dependency>            <groupId>org.springframework.boot</groupId>            <artifactId>spring-boot-starter-aop</artifactId>        </dependency>        <!--配置文件处理器-->        <dependency>            <groupId>org.springframework.boot</groupId>            <artifactId>spring-boot-configuration-processor</artifactId>            <optional>true</optional>        </dependency>        <!--测试依赖-->        <dependency>            <groupId>org.springframework.boot</groupId>            <artifactId>spring-boot-starter-test</artifactId>            <scope>test</scope>        </dependency>        <!--Lombok-->        <dependency>            <groupId>org.projectlombok</groupId>            <artifactId>lombok</artifactId>            <version>1.16.10</version>            <scope>provided</scope>        </dependency>        <dependency>            <groupId>com.walker.transaction</groupId>            <artifactId>transaction-api</artifactId>            <version>1.0-SNAPSHOT</version>        </dependency>        <dependency>            <groupId>org.springframework.boot</groupId>            <artifactId>spring-boot-starter-web</artifactId>            <version>${spring-boot.version}</version>            <exclusions>                <!--排除tomcat依赖 -->                <exclusion>                    <artifactId>spring-boot-starter-tomcat</artifactId>                    <groupId>org.springframework.boot</groupId>                </exclusion>            </exclusions>        </dependency>        <dependency>            <groupId>org.springframework.boot</groupId>            <artifactId>spring-boot-starter-undertow</artifactId>            <!--<scope>provided</scope>-->        </dependency>        <dependency>            <groupId>org.springframework.boot</groupId>            <artifactId>spring-boot-starter-data-jpa</artifactId>            <optional>true</optional>        </dependency>        <dependency>            <groupId>mysql</groupId>            <artifactId>mysql-connector-java</artifactId>            <version>5.1.47</version>        </dependency>        <dependency>            <groupId>org.apache.dubbo</groupId>            <artifactId>dubbo-spring-boot-starter</artifactId>            <version>${dubbo.version}</version>        </dependency>            <dependency>                <groupId>org.dromara</groupId>                <artifactId>hmily-annotation</artifactId>                <version>${hmily.version}</version>            </dependency><!--        <dependency>--><!--            <groupId>org.dromara</groupId>--><!--            <artifactId>hmily-core</artifactId>--><!--            <version>${hmily.version}</version>--><!--            <exclusions>--><!--                <exclusion>--><!--                    <groupId>org.dromara</groupId>--><!--                    <artifactId>hmily-config-zookeeper</artifactId>--><!--                </exclusion>--><!--                <exclusion>--><!--                    <groupId>org.apache.curator</groupId>--><!--                    <artifactId>curator-test</artifactId>--><!--                </exclusion>--><!--            </exclusions>--><!--        </dependency>--><!--        <dependency>--><!--            <groupId>org.dromara</groupId>--><!--            <artifactId>hmily-dubbo</artifactId>--><!--            <version>${hmily.version}</version>--><!--        </dependency>-->        <dependency>            <groupId>org.dromara</groupId>            <artifactId>hmily-spring-boot-starter-apache-dubbo</artifactId>            <version>${hmily.version}</version>            <exclusions>                <exclusion>                    <groupId>org.dromara</groupId>                    <artifactId>hmily-repository-mongodb</artifactId>                </exclusion>                <exclusion>                    <groupId>org.slf4j</groupId>                    <artifactId>slf4j-api</artifactId>                </exclusion>                <exclusion>                    <groupId>org.slf4j</groupId>                    <artifactId>slf4j-log4j12</artifactId>                </exclusion>                <exclusion>                    <groupId>log4j</groupId>                    <artifactId>log4j</artifactId>                </exclusion>            </exclusions>        </dependency>        <!--        <dependency>-->        <!--            <groupId>org.apache.curator</groupId>-->        <!--            <artifactId>curator-client</artifactId>-->        <!--            <version>${curator.version}</version>-->        <!--        </dependency>-->        <!--        <dependency>-->        <!--            <groupId>org.apache.curator</groupId>-->        <!--            <artifactId>curator-framework</artifactId>-->        <!--            <version>${curator.version}</version>-->        <!--        </dependency>-->        <!--        <dependency>-->        <!--            <groupId>org.apache.zookeeper</groupId>-->        <!--            <artifactId>zookeeper</artifactId>-->        <!--            <version>${zookeeper.version}</version>-->        <!--        </dependency>-->        <!--         Zookeeper dependencies-->        <dependency>            <groupId>org.apache.dubbo</groupId>            <artifactId>dubbo-dependencies-zookeeper</artifactId>            <version>${dubbo.version}</version>            <type>pom</type>            <exclusions>                <exclusion>                    <groupId>org.slf4j</groupId>                    <artifactId>slf4j-log4j12</artifactId>                </exclusion>            </exclusions>        </dependency>    </dependencies>    <dependencyManagement>        <dependencies>            <!--spring boot 公共版本定义-->            <dependency>                <groupId>org.springframework.boot</groupId>                <artifactId>spring-boot-dependencies</artifactId>                <version>${spring-boot.version}</version>                <type>pom</type>                <scope>import</scope>            </dependency>            <!--            <dependency>-->            <!--                <groupId>org.apache.dubbo</groupId>-->            <!--                <artifactId>dubbo-dependencies-bom</artifactId>-->            <!--                <version>${dubbo.version}</version>-->            <!--                <type>pom</type>-->            <!--                <scope>import</scope>-->            <!--            </dependency>-->        </dependencies>    </dependencyManagement>    <build>    </build></project>

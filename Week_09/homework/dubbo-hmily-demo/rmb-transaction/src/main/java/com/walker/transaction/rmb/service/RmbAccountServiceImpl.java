@@ -54,12 +54,18 @@ public class RmbAccountServiceImpl implements RmbAccountService {
     }
 
     public void confirmRmbPayment(Integer payerId, Integer count) {
-        System.out.println("支付成功");
+        System.out.println("【" + payerId + "】支付 (￥" + count + ") 成功");
         rmbAccountFreezeRepository.accountFinish(payerId, count, 1);
     }
 
     public void cancelRmbPayment(Integer payerId, Integer count) {
-        System.out.println("支付cancel");
+        System.out.println("【" + payerId + "】支付 (￥" + count + ") cancel");
+        RmbAccount rmbAccount = rmbAccountRepository.getOne(payerId);
+        // 余额不足无需解冻
+        Integer amount = rmbAccount.getAmount();
+        if (amount < count) {
+            return;
+        }
         rmbAccountRepository.paymentCancel(payerId, count);
         rmbAccountFreezeRepository.accountFinish(payerId, count, 1);
     }
@@ -86,13 +92,13 @@ public class RmbAccountServiceImpl implements RmbAccountService {
     }
 
     public void confirmRmbCollection(Integer payerId, Integer count) {
-        System.out.println("收款成功");
+        System.out.println("【" + payerId + "】收款 (￥" + count + ") 成功");
         rmbAccountRepository.collection(payerId, count);
         rmbAccountFreezeRepository.accountFinish(payerId, count, 2);
     }
 
     public void cancelRmbCollection(Integer payerId, Integer count) {
-        System.out.println("收款cancel");
+        System.out.println("【" + payerId + "】收款 (￥" + count + ") cancel");
         rmbAccountFreezeRepository.accountFinish(payerId, count, 2);
     }
 }

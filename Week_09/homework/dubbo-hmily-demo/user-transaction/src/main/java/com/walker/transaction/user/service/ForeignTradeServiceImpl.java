@@ -6,21 +6,24 @@ import com.walker.transaction.usd.UsdAccountService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.dromara.hmily.annotation.HmilyTCC;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author fcwalker
  * @date 2020/12/18 17:54
  **/
 @Service
+@Transactional
 public class ForeignTradeServiceImpl implements ForeignTradeService {
 
-    @DubboReference(version = "1.0.0", url = "dubbo://127.0.0.1:12390")
+    @DubboReference(version = "1.0.0", url = "dubbo://127.0.0.1:12390", timeout = 1000000)
     private RmbAccountService rmbAccountService;
 
-    @DubboReference(version = "1.0.0", url = "dubbo://127.0.0.1:12391")
+    @DubboReference(version = "1.0.0", url = "dubbo://127.0.0.1:12391", timeout = 1000000)
     private UsdAccountService usdAccountService;
 
     @Override
+    @HmilyTCC
     public boolean usdTrade(Integer payerId, Integer payeeId, Integer usdCount)  throws Exception {
         // 兑换人支付美元
         usdAccountService.usdPayment(payerId, usdCount);
@@ -31,6 +34,16 @@ public class ForeignTradeServiceImpl implements ForeignTradeService {
         rmbAccountService.rmbCollection(payerId, rmbCount);
         // 被兑换人收取美元
         usdAccountService.usdCollection(payeeId, usdCount);
+        return true;
+    }
+
+    public boolean confirmUsdTrade(Integer payerId, Integer payeeId, Integer usdCount) {
+        System.out.println("兑换成功");
+        return true;
+    }
+
+    public boolean cancelUsdTrade(Integer payerId, Integer payeeId, Integer usdCount) {
+        System.out.println("兑换失败");
         return true;
     }
 

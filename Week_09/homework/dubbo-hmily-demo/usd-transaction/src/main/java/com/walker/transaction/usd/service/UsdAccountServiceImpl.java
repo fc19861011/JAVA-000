@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
  **/
 @DubboService(version = "1.0.0")
 @Service
-@Transactional
 public class UsdAccountServiceImpl implements UsdAccountService {
 
     @Autowired
@@ -30,6 +29,8 @@ public class UsdAccountServiceImpl implements UsdAccountService {
     private UsdAccountFreezeRepository usdAccountFreezeRepository;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
+    @HmilyTCC(confirmMethod = "confirmUsdPayment", cancelMethod = "cancelUsdPayment")
     public boolean usdPayment(Integer payerId, Integer count) throws Exception {
         UsdAccount usdAccount = usdAccountRepository.getOne(payerId);
         Integer amount = usdAccount.getAmount();
@@ -55,18 +56,28 @@ public class UsdAccountServiceImpl implements UsdAccountService {
         throw new Exception("支付失败");
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void confirmUsdPayment(Integer payerId, Integer count) {
-        System.out.println("支付成功");
+        System.out.println("【" + payerId + "】支付 ($" + count + ") 成功");
         usdAccountFreezeRepository.accountFinish(payerId, count, 1);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void cancelUsdPayment(Integer payerId, Integer count) {
-        System.out.println("支付cancel");
+        System.out.println("【" + payerId + "】支付 ($" + count + ") cancel");
+        // 如果因为余额不足导致失败，无需解冻
+        UsdAccount usdAccount = usdAccountRepository.getOne(payerId);
+        Integer amount = usdAccount.getAmount();
+        if (amount < count) {
+            return;
+        }
         usdAccountRepository.paymentCancel(payerId, count);
         usdAccountFreezeRepository.accountFinish(payerId, count, 1);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
+    @HmilyTCC(confirmMethod = "confirmUsdCollection", cancelMethod = "cancelUsdCollection")
     public boolean usdCollection(Integer payerId, Integer count) throws Exception {
         UsdAccountFreeze accountFreeze = usdAccountFreezeRepository.findByUserIdAndFreezeType(payerId, 2);
         int freezeCount = 0;
@@ -86,14 +97,16 @@ public class UsdAccountServiceImpl implements UsdAccountService {
         throw new Exception("支付失败");
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void confirmUsdCollection(Integer payerId, Integer count) {
-        System.out.println("收款成功");
+        System.out.println("【" + payerId + "】收款 ($" + count + ") 成功");
         usdAccountRepository.collection(payerId, count);
         usdAccountFreezeRepository.accountFinish(payerId, count, 2);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void cancelUsdCollection(Integer payerId, Integer count) {
-        System.out.println("收款cancel");
+        System.out.println("【" + payerId + "】收款 ($" + count + ") cancel");
         usdAccountFreezeRepository.accountFinish(payerId, count, 2);
     }
 
@@ -115,19 +128,21 @@ public class UsdAccountServiceImpl implements UsdAccountService {
         return true;
     }
 
-    public void confirmUsdTrade(Integer payerId, Integer count) {
+    @Transactional(rollbackFor = Exception.class)
+    public void confirmUsdTrade(Integer payerId, Integer payeeId, Integer usdCount) {
         System.out.println("支付成功");
-        usdAccountFreezeRepository.accountFinish(payerId, count, 1);
+        usdAccountFreezeRepository.accountFinish(payerId, usdCount, 1);
         System.out.println("收款成功");
-        usdAccountRepository.collection(payerId, count);
-        usdAccountFreezeRepository.accountFinish(payerId, count, 2);
+        usdAccountRepository.collection(payeeId, usdCount);
+        usdAccountFreezeRepository.accountFinish(payeeId, usdCount, 2);
     }
 
-    public void cancelUsdTrade(Integer payerId, Integer count) {
-        usdAccountRepository.paymentCancel(payerId, count);
-        usdAccountFreezeRepository.accountFinish(payerId, count, 1);
+    @Transactional(rollbackFor = Exception.class)
+    public void cancelUsdTrade(Integer payerId, Integer payeeId, Integer usdCount) {
+        usdAccountRepository.paymentCancel(payerId, usdCount);
+        usdAccountFreezeRepository.accountFinish(payerId, usdCount, 1);
         System.out.println("收款cancel");
-        usdAccountFreezeRepository.accountFinish(payerId, count, 2);
+        usdAccountFreezeRepository.accountFinish(payeeId, usdCount, 2);
     }
 
 }

@@ -37,4 +37,11 @@ dubbo:
     timeout: 10000
   metadata-report:
     address: zookeeper://127.0.0.1:2181
-
+logging:
+  level:
+    root: debug
+    org.springframework.web: info
+    org.dromara.hmily.demo.bonuspoint: debug
+    org.dromara.hmily.demo.lottery: debug
+    org.dromara.hmily.demo: debug
+    io.netty: info

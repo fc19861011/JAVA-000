@@ -1,8 +1,11 @@
 package com.walker.transaction.rmb;
 
 import lombok.Data;
+import org.springframework.context.annotation.Lazy;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author fcwalker
@@ -11,6 +14,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "freeze_rmb_account")
+@Lazy(false)
 public class RmbAccountFreeze {
     @Id
     private Integer userId;

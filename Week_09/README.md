@@ -55,26 +55,133 @@ create table usd_account(
   amount int not null,
   PRIMARY KEY (`user_id`) USING BTREE
 );
-insert into rmb_account values (1,0);
-insert into usd_account values (1,5);
 
-create table rmb_account_freeze (
-  user_id int not null,
-  amount int not null,
+CREATE TABLE `freeze_rmb_account` (
+  `user_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `freeze_type` tinyint(4) NOT NULL,
   PRIMARY KEY (`user_id`) USING BTREE
-);
+)
 
-create table usd_account_freeze (
-  user_id int not null,
-  amount int not null,
-  PRIMARY KEY (`user_id`) USING BTREE
-);
+CREATE TABLE `freeze_usd_account` (
+    `user_id` int(11) NOT NULL,
+    `amount` int(11) NOT NULL,
+    `freeze_type` tinyint(4) NOT NULL,
+    PRIMARY KEY (`user_id`) USING BTREE
+)
 
 -- B库 表结构和A库一致
-insert into rmb_account values (2,100);
-insert into usd_account values (2,0);
+
+-- 数据初始化
+update usd_account set amount = 10 where user_id = 1;
+update usd_account set amount = 0 where user_id = 2;
+update rmb_account set amount = 0 where user_id = 1;
+update rmb_account set amount = 50 where user_id = 2;
+delete from freeze_rmb_account;
+delete from freeze_usd_account;
 
 ```
-表结构不太合理，正在调试中
-预计周六下午搞定
+> A库和B库不在同一个数据库中，可以结合shardingsphere proxy进行开发
+- 使用proxy情况分析：   
+本次案例的数据库设计为两个库，每个库表结构一致，且均都是单表，属于水平的分库，proxy配置的时候没有找到合适的案例，
+经过多次尝试，发现这种情况只需配置actualDataNodes以及bindingTables即可实现水平的分库。   
+最终配置如下（config-sharding.yaml）：   
+```yaml
+######################################################################################################
+#
+# If you want to connect to MySQL, you should manually copy MySQL driver to lib directory.
+#
+######################################################################################################
+
+schemaName: foreign_exchange
+#
+dataSourceCommon:
+  username: root
+  password: root
+  connectionTimeoutMilliseconds: 30000
+  idleTimeoutMilliseconds: 60000
+  maxLifetimeMilliseconds: 1800000
+  maxPoolSize: 50
+  minPoolSize: 1
+  maintenanceIntervalMilliseconds: 30000
+#
+dataSources:
+  ds_0:
+    url: jdbc:mysql://localhost:3307/foreign_exchange?serverTimezone=UTC&useSSL=false
+  ds_1:
+    url: jdbc:mysql://localhost:3306/foreign_exchange?serverTimezone=UTC&useSSL=false
+#
+rules:
+- !SHARDING
+  tables:
+    rmb_account:
+      actualDataNodes: ds_${0..1}.rmb_account
+#      tableStrategy:
+#        standard:
+#          shardingColumn: user_id
+#          shardingAlgorithmName: rmb_account_inline
+    freeze_rmb_account:
+      actualDataNodes: ds_${0..1}.freeze_rmb_account
+#      tableStrategy:
+#        standard:
+#          shardingColumn: user_id
+#          shardingAlgorithmName: rmb_account_freeze_inline
+    usd_account:
+      actualDataNodes: ds_${0..1}.usd_account
+#      tableStrategy:
+#        standard:
+#          shardingColumn: user_id
+#          shardingAlgorithmName: usd_account_inline
+    freeze_usd_account:
+      actualDataNodes: ds_${0..1}.freeze_usd_account
+#      tableStrategy:
+#        standard:
+#          shardingColumn: user_id
+#          shardingAlgorithmName: usd_account_freeze_inline 
+  bindingTables:
+    - rmb_account,freeze_rmb_account,usd_account,freeze_usd_account
+  defaultDatabaseStrategy:
+    standard:
+      shardingColumn: user_id
+      shardingAlgorithmName: database_inline
+  defaultTableStrategy:
+    none:
+#  
+  shardingAlgorithms:
+    database_inline:
+      type: INLINE
+      props:
+        algorithm-expression: ds_${user_id % 2}
+#    rmb_account_inline:
+#      type: INLINE
+#      props:
+#        algorithm-expression: rmb_account
+#    rmb_account_freeze_inline:
+#      type: INLINE
+#      props:
+#        algorithm-expression: freeze_rmb_account
+#    usd_account_inline:
+#      type: INLINE
+#      props:
+#        algorithm-expression: usd_account
+#    usd_account_freeze_inline:
+#      type: INLINE
+#      props:
+#        algorithm-expression: freeze_usd_account
+
+```
+- 程序设计   
+  - 服务划分：
+    - 人民币支付模块(人民币支付、人民币收款)
+    - 美元支付模块(美元支付、美元收款)
+    - 用户模块（兑换美元、兑换人民币）
+- 测试过程记录
+  - 在美元支付模块中实现美元兑换的流程，并执行   
+  如果在hmily的tcc中执行confirm失败后（confirm方法参数不对），程序重启中会自动进行补偿，待有时间研究下实现的原理
+  - 在用户模块测试调用兑换美元   
+  人民币支付模块成功   
+  美元支付模块报错：not found service provider for : org.dromara.hmily.core.service.HmilyTransactionHandlerFactory   
+  本项目只需引入hmily-spring-boot-starter-apache-dubbo   
+  多引入一个hmily-dubbo的包，导致分布式事务失效
+
 

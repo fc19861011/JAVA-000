@@ -1,7 +1,7 @@
 package com.walker.transaction.rmb;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 
@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "rmb_account")
+@Lazy(false)
 public class RmbAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

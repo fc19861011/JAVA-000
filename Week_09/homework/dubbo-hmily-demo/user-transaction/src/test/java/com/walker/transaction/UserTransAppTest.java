@@ -18,7 +18,16 @@ public class UserTransAppTest
     ForeignTradeService foreignTradeService;
 
     @Test
-    public void usdTrade() throws Exception {
-        foreignTradeService.usdTrade(1,2,1);
+    public void usdTrade() {
+        try {
+            foreignTradeService.usdTrade(1,2,10);
+        } catch (Exception e) {
+        }
+        System.out.println("执行完毕");
+    }
+
+    @Test
+    public void rmbTrade() throws Exception {
+        foreignTradeService.rmbTrade(1,2,7);
     }
 }

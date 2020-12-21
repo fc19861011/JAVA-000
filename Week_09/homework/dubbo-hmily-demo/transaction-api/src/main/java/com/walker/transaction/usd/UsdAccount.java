@@ -1,6 +1,7 @@
 package com.walker.transaction.usd;
 
 import lombok.Data;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "usd_account")
+@Lazy(false)
 public class UsdAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

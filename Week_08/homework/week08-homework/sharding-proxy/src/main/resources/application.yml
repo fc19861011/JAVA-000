@@ -23,20 +23,20 @@ spring:
       connection-timeout: 30000
       connection-test-query: SELECT 1
 # Log Transactions Details
-#logging:
-#  level:
-#    org:
-#      springframework:
-#        orm:
-#          jpa: DEBUG
-#        transaction: trace
-#      hibernate:
-#        engine:
-#          transaction:
-#            internal:
-#              TransactionImpl: debug
-#        resource:
-#          jdbc: trace
-#    com:
-#      zaxxer:
-#        hikari: DEBUG
+logging:
+  level:
+    org:
+      springframework:
+        orm:
+          jpa: DEBUG
+        transaction: trace
+      hibernate:
+        engine:
+          transaction:
+            internal:
+              TransactionImpl: debug
+        resource:
+          jdbc: trace
+    com:
+      zaxxer:
+        hikari: DEBUG

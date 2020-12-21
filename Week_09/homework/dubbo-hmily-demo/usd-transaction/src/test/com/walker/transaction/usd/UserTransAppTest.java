@@ -19,6 +19,6 @@ public class UserTransAppTest
 
     @Test
     public void usdTrade() throws Exception {
-        foreignTradeService.usdTrade(1,2,1);
+        foreignTradeService.usdTrade(1,2,10);
     }
 }
