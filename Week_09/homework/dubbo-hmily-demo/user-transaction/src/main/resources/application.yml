@@ -41,5 +41,5 @@ logging:
   level:
     root: error
     org.springframework.web: info
-    org.dromara.hmily: debug
+    org.dromara.hmily: error
     io.netty: info
