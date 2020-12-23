@@ -39,9 +39,7 @@ dubbo:
     address: zookeeper://127.0.0.1:2181
 logging:
   level:
-    root: debug
+    root: error
     org.springframework.web: info
-    org.dromara.hmily.demo.bonuspoint: debug
-    org.dromara.hmily.demo.lottery: debug
-    org.dromara.hmily.demo: debug
+    org.dromara.hmily: debug
     io.netty: info

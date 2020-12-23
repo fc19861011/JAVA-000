@@ -59,14 +59,14 @@ create table usd_account(
 CREATE TABLE `freeze_rmb_account` (
   `user_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
-  `freeze_type` tinyint(4) NOT NULL,
+  `freeze_type` bigint(20) NOT NULL,
   PRIMARY KEY (`user_id`) USING BTREE
 )
 
 CREATE TABLE `freeze_usd_account` (
     `user_id` int(11) NOT NULL,
     `amount` int(11) NOT NULL,
-    `freeze_type` tinyint(4) NOT NULL,
+    `freeze_type` bigint(20) NOT NULL,
     PRIMARY KEY (`user_id`) USING BTREE
 )
 
@@ -179,9 +179,7 @@ rules:
   - 在美元支付模块中实现美元兑换的流程，并执行   
   如果在hmily的tcc中执行confirm失败后（confirm方法参数不对），程序重启中会自动进行补偿，待有时间研究下实现的原理
   - 在用户模块测试调用兑换美元   
-  人民币支付模块成功   
-  美元支付模块报错：not found service provider for : org.dromara.hmily.core.service.HmilyTransactionHandlerFactory   
-  本项目只需引入hmily-spring-boot-starter-apache-dubbo   
-  多引入一个hmily-dubbo的包，导致分布式事务失效
+  过程中偶尔会报：not found service provider for : org.dromara.hmily.core.service.HmilyTransactionHandlerFactory   
+  本项目（springboot+apache dubbo）只需引入hmily-spring-boot-starter-apache-dubbo以及hmily-annotation，无需引入hmily-dubbo包，多引入包会导致分布式事务失效（折腾了两天）
 
 

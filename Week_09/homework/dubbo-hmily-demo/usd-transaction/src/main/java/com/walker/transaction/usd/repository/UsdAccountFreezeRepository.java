@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
  **/
 public interface UsdAccountFreezeRepository extends JpaRepository<UsdAccountFreeze, Integer> {
 
-    UsdAccountFreeze findByUserIdAndFreezeType(Integer userId, Integer freezeType);
+    UsdAccountFreeze findByUserIdAndFreezeType(Integer userId, Long freezeType);
 
     /**
      * 款项冻结
@@ -23,7 +23,7 @@ public interface UsdAccountFreezeRepository extends JpaRepository<UsdAccountFree
      */
     @Modifying
     @Query("update UsdAccountFreeze set amount = amount + :count where userId = :payerId and freezeType = :freezeType")
-    int accountFreeze(@Param("payerId") Integer payerId, @Param("count") Integer count, @Param("freezeType") Integer freezeType);
+    int accountFreeze(@Param("payerId") Integer payerId, @Param("count") Integer count, @Param("freezeType") Long freezeType);
 
     /**
      * 释放冻结的款项
@@ -34,6 +34,6 @@ public interface UsdAccountFreezeRepository extends JpaRepository<UsdAccountFree
      */
     @Modifying
     @Query("update UsdAccountFreeze set amount = amount - :count where userId = :payerId and freezeType = :freezeType")
-    int accountFinish(@Param("payerId") Integer payerId, @Param("count") Integer count, @Param("freezeType") Integer freezeType);
+    int accountFinish(@Param("payerId") Integer payerId, @Param("count") Integer count, @Param("freezeType") Long freezeType);
 
 }

@@ -15,7 +15,7 @@ public interface UsdAccountService {
      * @throws Exception s
      */
     @Hmily
-    boolean usdPayment(Integer payerId, Integer amount) throws Exception;
+    boolean usdPayment(Integer payerId, Integer amount, Long transId) throws Exception;
 
     /**
      * 美元收款
@@ -24,8 +24,8 @@ public interface UsdAccountService {
      * @throws Exception
      */
     @Hmily
-    boolean usdCollection(Integer payerId, Integer amount) throws Exception;
+    boolean usdCollection(Integer payerId, Integer amount, Long transId) throws Exception;
 
-    @Hmily
-    boolean usdTrade(Integer payerId, Integer payeeId, Integer usdCount) throws Exception;
+//    @Hmily
+//    boolean usdTrade(Integer payerId, Integer payeeId, Integer usdCount) throws Exception;
 }

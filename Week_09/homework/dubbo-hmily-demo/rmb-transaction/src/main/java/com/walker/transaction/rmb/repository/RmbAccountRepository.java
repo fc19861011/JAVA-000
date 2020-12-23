@@ -20,7 +20,7 @@ public interface RmbAccountRepository extends JpaRepository<RmbAccount, Integer>
      * @return
      */
     @Modifying
-    @Query("update RmbAccount set amount = amount - :count where userId = :payerId")
+    @Query("update RmbAccount set amount = amount - :count where userId = :payerId and amount > 0")
     int payment(@Param("payerId") Integer payerId, @Param("count") Integer count);
 
     /**

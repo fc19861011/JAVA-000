@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RmbAccountFreezeRepository extends JpaRepository<RmbAccountFreeze, Integer> {
 
-    RmbAccountFreeze findByUserIdAndFreezeType(Integer userId, Integer freezeType);
+    RmbAccountFreeze findByUserIdAndFreezeType(Integer userId, Long freezeType);
     /**
      * 款项冻结
      * @param payerId
@@ -24,7 +24,7 @@ public interface RmbAccountFreezeRepository extends JpaRepository<RmbAccountFree
      */
     @Modifying
     @Query("update RmbAccountFreeze set amount = amount + :count where userId = :payerId and freezeType = :freezeType")
-    int accountFreeze(@Param("payerId") Integer payerId, @Param("count") Integer count,  @Param("freezeType") Integer freezeType);
+    int accountFreeze(@Param("payerId") Integer payerId, @Param("count") Integer count,  @Param("freezeType") Long freezeType);
 
     /**
      * 释放冻结的款项
@@ -35,6 +35,6 @@ public interface RmbAccountFreezeRepository extends JpaRepository<RmbAccountFree
      */
     @Modifying
     @Query("update RmbAccountFreeze set amount = amount - :count where userId = :payerId and freezeType = :freezeType")
-    int accountFinish(@Param("payerId") Integer payerId, @Param("count") Integer count,  @Param("freezeType") Integer freezeType);
+    int accountFinish(@Param("payerId") Integer payerId, @Param("count") Integer count,  @Param("freezeType") Long freezeType);
 
 }

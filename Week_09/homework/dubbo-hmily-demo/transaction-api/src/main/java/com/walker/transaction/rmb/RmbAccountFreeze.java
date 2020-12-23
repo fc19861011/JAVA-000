@@ -19,5 +19,5 @@ public class RmbAccountFreeze {
     @Id
     private Integer userId;
     private Integer amount;
-    private Integer freezeType;
+    private Long freezeType;
 }

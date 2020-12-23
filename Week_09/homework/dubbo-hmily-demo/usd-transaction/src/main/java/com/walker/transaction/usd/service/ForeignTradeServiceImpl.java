@@ -17,7 +17,7 @@ public class ForeignTradeServiceImpl implements ForeignTradeService {
     @Override
     public boolean usdTrade(Integer payerId, Integer payeeId, Integer usdCount) throws Exception {
         // 兑换人支付美元
-        usdAccountService.usdTrade(payerId, payeeId, usdCount);
+//        usdAccountService.usdTrade(payerId, payeeId, usdCount);
         return true;
     }
 

@@ -19,5 +19,5 @@ public class UsdAccountFreeze {
     @Id
     private Integer userId;
     private Integer amount;
-    private Integer freezeType;
+    private Long freezeType;
 }
