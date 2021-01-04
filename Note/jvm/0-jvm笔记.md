@@ -69,6 +69,8 @@
 
 #### 3.2.1 分代模型
 
+
+
 #### 3.2.2 方法区（Method Area）
 
 #### 3.2.3 栈（栈帧）
@@ -77,7 +79,7 @@
 
 #### 3.2.5 程序计数器（PC寄存器）
 
-### 3.3  执行引擎（Execution Engine）
+### 3.3  执行引擎（Execution Engeine）
 
 ### 3.4 本地方法接口（Native Interface） 
 
