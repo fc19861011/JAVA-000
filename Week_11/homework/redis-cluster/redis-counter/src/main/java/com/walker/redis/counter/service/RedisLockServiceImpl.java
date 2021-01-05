@@ -1,4 +1,4 @@
-package com.walker.redis.lock.service;
+package com.walker.redis.counter.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -43,6 +43,8 @@ public class RedisLockServiceImpl implements RedisLockService {
                 .append("end ")
                 .append("return 0");
         String luaScript = sb.toString();
+        System.out.println(luaScript);
+
         do {
             RedisScript<Long> redisScript = new DefaultRedisScript<>(luaScript, Long.class);
             Object result = redisTemplate.execute(redisScript, Collections.singletonList(lockKey), lockKey, timeout);
