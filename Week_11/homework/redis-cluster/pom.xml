@@ -10,6 +10,8 @@
     <modules>
         <module>redis-lock</module>
         <module>redis-counter</module>
+        <module>redis-pub</module>
+        <module>redis-sub</module>
     </modules>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
