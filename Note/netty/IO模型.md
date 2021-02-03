@@ -28,7 +28,7 @@ I/O请求可以分为两个阶段，分别位调用阶段和执行阶段
 
 ### 信号驱动I/O
 
-<img src="C:\fcwalker\github\JAVA-000\Note\img\sigio.png" alt="sigio" style="zoom: 33%;" />
+<img src=".\img\sigio.png" alt="sigio" style="zoom: 33%;" />
 
 信号驱动 I/O 并不常用，它是一种半异步的 I/O 模型。在使用信号驱动 I/O 时，当数据准备就绪后，内核通过发送一个 SIGIO 信号通知应用进程，应用进程就可以开始读取数据了。
 
